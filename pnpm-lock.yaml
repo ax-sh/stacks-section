@@ -47,6 +47,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  react-inlinesvg:
+    specifier: ^4.0.2
+    version: 4.0.2(react@18.2.0)
   simple-icons:
     specifier: ^9.9.0
     version: 9.9.0
@@ -3870,6 +3873,23 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-from-dom@0.6.2(react@18.2.0):
+    resolution: {integrity: sha512-qvWWTL/4xw4k/Dywd41RBpLQUSq97csuv15qrxN+izNeLYlD9wn5W8LspbfYe5CWbaSdkZ72BsaYBPQf2x4VbQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /react-inlinesvg@4.0.2(react@18.2.0):
+    resolution: {integrity: sha512-JHYNAABfVsFe6RXJtwS4q38XRVm75GCAof6fVvOJ+AwXi15SVWK1Ow6ZXbI/azbaZ6vjD/4gnjag2VnDoD2NvA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-from-dom: 0.6.2(react@18.2.0)
     dev: false
 
   /react-is@16.13.1:

@@ -3,8 +3,9 @@ import { Input } from "@nextui-org/react";
 import type { SimpleIcon } from "simple-icons";
 import * as icons from "simple-icons";
 import { Image } from "@nextui-org/react";
+import SVG from "react-inlinesvg";
 
-import React from "react";
+import React, { useMemo, useState } from "react";
 export const SearchIcon = (props: any) => (
 	<svg
 		aria-hidden="true"
@@ -33,7 +34,7 @@ export const SearchIcon = (props: any) => (
 	</svg>
 );
 
-function SearchInput() {
+function SearchInput({ setTerm, term }: { term: string; setTerm: (term: string) => void }) {
 	return (
 		<Input
 			label="Search"
@@ -61,24 +62,55 @@ function SearchInput() {
 				],
 			}}
 			placeholder="Type to search..."
-			// startContent={
-			// 	<SearchIcon className="text-black/50 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
-			// }
+			startContent={
+				<SearchIcon className="text-black/50 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
+			}
+			onInput={(e) => setTerm(e.target.value)}
+			value={term}
 		/>
 	);
 }
 
 export default function IconCard({ icon }: { icon: SimpleIcon }) {
-	return <div className={"bg-white h-10 w-10"} dangerouslySetInnerHTML={{ __html: icon.svg }} />;
+	return (
+		<div style={{ fill: "#" + icon.hex }}>
+			<SVG
+				key={icon.slug}
+				src={icon.svg}
+				className={`bg-white h-10 w-10 fill-[#${icon.hex}]`}
+				// preProcessor={(code) => {
+				// 	const i = code.replace(/role=".*?"/g, `fill="#${icon.hex}"`);
+				// 	// const i = code.replace(/role=".*?"/g, `fill="currentColor"`);
+				// 	console.log(i, 777);
+				// 	return code;
+				// }}
+				title={icon.title}
+			/>
+		</div>
+	);
+	// return <div className={"bg-white h-10 w-10"} dangerouslySetInnerHTML={{ __html: icon.svg }} />;
 }
 
 export function Search() {
-	console.log(icons.fa);
+	const [term, setTerm] = useState("");
+	const filteredIcons = useMemo(() => {
+		if (!term) return [];
+		const predicate = (i: SimpleIcon) => i.title.toLowerCase().includes(term);
+		const results = Object.values(icons).filter(predicate);
+
+		return results;
+	}, [term]);
+
 	return (
-		<div>
-			<SearchInput />
-			show dropdown
-			<IconCard icon={icons.siAtom} />
+		<div className={"flex flex-col gap-4"}>
+			<SearchInput term={term} setTerm={setTerm} />
+			<div className={"overflow-auto h-[25rem]"}>
+				<div className={"flex flex-wrap gap-2"}>
+					{filteredIcons.map((icon) => (
+						<IconCard key={icon.slug} icon={icon} />
+					))}
+				</div>
+			</div>
 		</div>
 	);
 }
