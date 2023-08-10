@@ -15,7 +15,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
 	return (
 		<html lang="en" className="dark">
 			<body>
-				<Providers>{children}</Providers>
+				<Providers>
+					<nav className={"h-20"}></nav>
+					{children}
+				</Providers>
 			</body>
 		</html>
 	);
