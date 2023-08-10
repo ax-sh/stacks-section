@@ -1,8 +1,9 @@
 "use client";
 import { Input } from "@nextui-org/react";
-{
-	/*<SearchInput />*/
-}
+import type { SimpleIcon } from "simple-icons";
+import * as icons from "simple-icons";
+import { Image } from "@nextui-org/react";
+
 import React from "react";
 export const SearchIcon = (props: any) => (
 	<svg
@@ -67,12 +68,17 @@ function SearchInput() {
 	);
 }
 
+export default function IconCard({ icon }: { icon: SimpleIcon }) {
+	return <div className={"bg-white h-10 w-10"} dangerouslySetInnerHTML={{ __html: icon.svg }} />;
+}
+
 export function Search() {
+	console.log(icons.fa);
 	return (
 		<div>
 			<SearchInput />
 			show dropdown
+			<IconCard icon={icons.siAtom} />
 		</div>
 	);
 }
-// export default Search;

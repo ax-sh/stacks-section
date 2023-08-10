@@ -17,7 +17,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
 		<html lang="en" className="dark">
 			<body>
 				<Providers>
-					{/*<Nav />*/}
+					<Nav />
 					{children}
 				</Providers>
 			</body>
