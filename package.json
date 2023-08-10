@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "xo --prettier"
+    "test": "xo"
   },
   "dependencies": {
     "@nextui-org/react": "^2.0.11",
@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "clsx": "^2.0.0",
+    "eslint-config-prettier": "^9.0.0",
     "prettier": "^3.0.1"
   }
 }

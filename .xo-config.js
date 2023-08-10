@@ -1,13 +1,16 @@
 module.exports = {
-  rules: {
-    "unicorn/no-array-for-each": "off",
-  },
-  overrides: [
-    {
-      files: ["**/*config.ts", "**/*config.js"],
-      rules: {
-        "unicorn/prefer-module": "off",
-      },
-    },
-  ],
+	extends: ["prettier"],
+	rules: {
+		"unicorn/no-array-for-each": "off",
+		"import/extensions": "off",
+		"capitalized-comments": "off",
+	},
+	overrides: [
+		{
+			files: ["**/*config.ts", "**/*config.js"],
+			rules: {
+				"unicorn/prefer-module": "off",
+			},
+		},
+	],
 };
