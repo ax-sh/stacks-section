@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "xo"
+    "test": "xo --prettier"
   },
   "dependencies": {
     "@nextui-org/react": "^2.0.11",
