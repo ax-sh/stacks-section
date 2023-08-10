@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { PropsWithChildren } from "react";
 import { Providers } from "./providers";
 import "./globals.css";
-import Nav from "@/app/components/nav";
+import Nav from "@/components/nav";
 
 // import { Inter } from "next/font/google";
 // const inter = Inter({ subsets: ["latin"] });
@@ -17,7 +17,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
 		<html lang="en" className="dark">
 			<body>
 				<Providers>
-					<Nav />
+					{/*<Nav />*/}
 					{children}
 				</Providers>
 			</body>

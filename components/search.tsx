@@ -1,6 +1,8 @@
 "use client";
 import { Input } from "@nextui-org/react";
-
+{
+	/*<SearchInput />*/
+}
 import React from "react";
 export const SearchIcon = (props: any) => (
 	<svg
@@ -58,11 +60,19 @@ function SearchInput() {
 				],
 			}}
 			placeholder="Type to search..."
-			startContent={
-				<SearchIcon className="text-black/50 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
-			}
+			// startContent={
+			// 	<SearchIcon className="text-black/50 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
+			// }
 		/>
 	);
 }
 
-export default SearchInput;
+export function Search() {
+	return (
+		<div>
+			<SearchInput />
+			show dropdown
+		</div>
+	);
+}
+// export default Search;
