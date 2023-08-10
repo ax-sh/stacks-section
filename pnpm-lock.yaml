@@ -35,6 +35,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  simple-icons:
+    specifier: ^9.9.0
+    version: 9.9.0
   tailwindcss:
     specifier: 3.3.3
     version: 3.3.3
@@ -2128,6 +2131,11 @@ packages:
       call-bind: 1.0.2
       get-intrinsic: 1.2.1
       object-inspect: 1.12.3
+    dev: false
+
+  /simple-icons@9.9.0:
+    resolution: {integrity: sha512-1Pe4iLuEdUfFP60pgdBl9CzDiKK7gYlIMmnEPr8G9+pYXR4lZRkGta4UapbXcN1g3oGy1FM3HdRT+0tXaDhzIw==}
+    engines: {node: '>=0.12.18'}
     dev: false
 
   /slash@3.0.0:
