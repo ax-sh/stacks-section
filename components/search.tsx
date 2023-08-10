@@ -65,7 +65,7 @@ function SearchInput({ setTerm, term }: { term: string; setTerm: (term: string) 
 			startContent={
 				<SearchIcon className="text-black/50 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
 			}
-			onInput={(e) => setTerm(e.target.value)}
+			onChange={(e) => setTerm(e.target.value)}
 			value={term}
 		/>
 	);
@@ -77,7 +77,7 @@ export default function IconCard({ icon }: { icon: SimpleIcon }) {
 			<SVG
 				key={icon.slug}
 				src={icon.svg}
-				className={`bg-white h-10 w-10 fill-[#${icon.hex}]`}
+				className={`bg-white/20 rounded-md h-20 w-20 fill-[#${icon.hex}]`}
 				// preProcessor={(code) => {
 				// 	const i = code.replace(/role=".*?"/g, `fill="#${icon.hex}"`);
 				// 	// const i = code.replace(/role=".*?"/g, `fill="currentColor"`);
@@ -86,6 +86,7 @@ export default function IconCard({ icon }: { icon: SimpleIcon }) {
 				// }}
 				title={icon.title}
 			/>
+			<label>{icon.title}</label>
 		</div>
 	);
 	// return <div className={"bg-white h-10 w-10"} dangerouslySetInnerHTML={{ __html: icon.svg }} />;
