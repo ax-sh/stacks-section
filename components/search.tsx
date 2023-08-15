@@ -4,19 +4,19 @@ import type { SimpleIcon } from "simple-icons";
 import * as icons from "simple-icons";
 // import { Image } from "@nextui-org/react";
 import SVG from "react-inlinesvg";
-
 import dynamic from "next/dynamic";
-const DndProvider = dynamic(() => import("react-dnd").then((dnd) => dnd.DndProvider), {
-	ssr: false,
-});
 // const HTML5Backend: any = dynamic(
 // 	() => import("react-dnd-html5-backend").then((html) => html.HTML5Backend as any),
 // 	{ ssr: false }
 // );
 import { HTML5Backend } from "react-dnd-html5-backend";
-
-import React, { CSSProperties, useMemo, useState } from "react";
+import React, { type CSSProperties, useMemo, useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
+
+const DndProvider = dynamic(async () => import("react-dnd").then((dnd) => dnd.DndProvider), {
+	ssr: false,
+});
+
 export const SearchIcon = (props: any) => (
 	<svg
 		aria-hidden="true"
@@ -76,7 +76,7 @@ function SearchInput({ setTerm, term }: { term: string; setTerm: (term: string) 
 			startContent={
 				<SearchIcon className="text-black/50 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
 			}
-			onChange={(e) => setTerm(e.target.value)}
+			onChange={(e) => { setTerm(e.target.value); }}
 			value={term}
 		/>
 	);
@@ -86,7 +86,7 @@ export default function IconCard({ icon }: { icon: SimpleIcon }) {
 	const [{ isDragging }, drag] = useDrag(() => ({
 		type: "ItemTypes.BOX",
 		item: { name },
-		end: (item, monitor) => {
+		end(item, monitor) {
 			const dropResult = monitor.getDropResult<DropResult>();
 			if (item && dropResult) {
 				alert(`You dropped ${item.name} into ${dropResult.name}!`);

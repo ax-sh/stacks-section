@@ -3,6 +3,7 @@
 // import { siSimpleicons } from "simple-icons";
 
 import { Search } from "@/components/search";
+
 export default function Home() {
 	return (
 		<main className="dark text-foreground bg-background">
@@ -11,7 +12,7 @@ export default function Home() {
 				config export{" "}
 			</section>
 			<section className={"container mx-auto"}>icons</section>
-			{/*<Card />*/}
+			{/* <Card /> */}
 		</main>
 	);
 }
