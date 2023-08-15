@@ -5,6 +5,15 @@ import * as icons from "simple-icons";
 import { Image } from "@nextui-org/react";
 import SVG from "react-inlinesvg";
 
+import dynamic from "next/dynamic";
+const DndProvider = dynamic(() => import("react-dnd").then((dnd) => dnd.DndProvider), {
+	ssr: false,
+});
+const HTML5Backend: any = dynamic(
+	() => import("react-dnd-html5-backend").then((html) => html.HTML5Backend as any),
+	{ ssr: false }
+);
+
 import React, { useMemo, useState } from "react";
 export const SearchIcon = (props: any) => (
 	<svg
@@ -104,14 +113,16 @@ export function Search() {
 
 	return (
 		<div className={"flex flex-col gap-4"}>
-			<SearchInput term={term} setTerm={setTerm} />
-			<div className={"overflow-auto h-[25rem]"}>
-				<div className={"flex flex-wrap gap-2"}>
-					{filteredIcons.map((icon) => (
-						<IconCard key={icon.slug} icon={icon} />
-					))}
+			<DndProvider backend={HTML5Backend}>
+				<SearchInput term={term} setTerm={setTerm} />
+				<div className={"overflow-auto h-[25rem]"}>
+					<div className={"flex flex-wrap gap-2"}>
+						{filteredIcons.map((icon) => (
+							<IconCard key={icon.slug} icon={icon} />
+						))}
+					</div>
 				</div>
-			</div>
+			</DndProvider>
 		</div>
 	);
 }
