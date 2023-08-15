@@ -15,8 +15,8 @@ const DndProvider = dynamic(() => import("react-dnd").then((dnd) => dnd.DndProvi
 // );
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import React, { useMemo, useState } from "react";
-import { useDrag } from "react-dnd";
+import React, { CSSProperties, useMemo, useState } from "react";
+import { useDrag, useDrop } from "react-dnd";
 export const SearchIcon = (props: any) => (
 	<svg
 		aria-hidden="true"
@@ -119,6 +119,44 @@ export default function IconCard({ icon }: { icon: SimpleIcon }) {
 	// return <div className={"bg-white h-10 w-10"} dangerouslySetInnerHTML={{ __html: icon.svg }} />;
 }
 
+const style: CSSProperties = {
+	height: "12rem",
+	width: "12rem",
+	marginRight: "1.5rem",
+	marginBottom: "1.5rem",
+	color: "white",
+	padding: "1rem",
+	textAlign: "center",
+	fontSize: "1rem",
+	lineHeight: "normal",
+	float: "left",
+};
+
+function DropSection() {
+	const [{ canDrop, isOver }, drop] = useDrop(() => ({
+		accept: "ItemTypes.BOX",
+		drop: () => ({ name: "Dustbin" }),
+		collect: (monitor) => ({
+			isOver: monitor.isOver(),
+			canDrop: monitor.canDrop(),
+		}),
+	}));
+
+	const isActive = canDrop && isOver;
+	let backgroundColor = "#222";
+	if (isActive) {
+		backgroundColor = "darkgreen";
+	} else if (canDrop) {
+		backgroundColor = "darkkhaki";
+	}
+
+	return (
+		<div ref={drop} style={{ ...style, backgroundColor }} data-testid="dustbin">
+			{isActive ? "Release to drop" : "Drag a box here"}
+		</div>
+	);
+}
+
 export function Search() {
 	const [term, setTerm] = useState("");
 	const filteredIcons = useMemo(() => {
@@ -140,6 +178,7 @@ export function Search() {
 						))}
 					</div>
 				</div>
+				<DropSection />
 			</DndProvider>
 		</div>
 	);
