@@ -17,6 +17,8 @@ const DndProvider = dynamic(async () => import("react-dnd").then((dnd) => dnd.Dn
 	ssr: false,
 });
 
+type DropResult = any
+
 export const SearchIcon = (props: any) => (
 	<svg
 		aria-hidden="true"
@@ -76,7 +78,7 @@ function SearchInput({ setTerm, term }: { term: string; setTerm: (term: string) 
 			startContent={
 				<SearchIcon className="text-black/50 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
 			}
-			onChange={(e) => { setTerm(e.target.value); }}
+			onChange={(event) => { setTerm(event.target.value); }}
 			value={term}
 		/>
 	);
@@ -89,7 +91,7 @@ export default function IconCard({ icon }: { icon: SimpleIcon }) {
 		end(item, monitor) {
 			const dropResult = monitor.getDropResult<DropResult>();
 			if (item && dropResult) {
-				alert(`You dropped ${item.name} into ${dropResult.name}!`);
+				console.log(`You dropped ${item.name} into ${dropResult.name}!`);
 			}
 		},
 		collect: (monitor) => ({
