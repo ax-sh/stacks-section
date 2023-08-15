@@ -20,3 +20,4 @@ https://nextui.org/
 https://github.com/prettier/eslint-config-prettier
 https://www.npmjs.com/package/simple-icons
 https://nextjs.org/
+react-dnd
