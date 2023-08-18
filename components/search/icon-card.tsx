@@ -6,7 +6,7 @@ import { useDragIcon } from "@/components/search/use-drag-icon";
 export type DropResult = any;
 
 export function IconCard({ icon }: { icon: SimpleIcon }) {
-	const { isDragging, drag, opacity } = useDragIcon(icon, (slug: string) => {
+	const { drag, opacity } = useDragIcon(icon, (slug: string) => {
 		console.log(slug, 34);
 	});
 
