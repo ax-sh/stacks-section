@@ -1,12 +1,18 @@
 import clsx from "clsx";
-import React from "react";
+import React, { useMemo } from "react";
 import useIconStore from "@/store";
 import { useDropIcon } from "@/components/search/hooks/use-drop-icon";
-
+import * as simpleIcons from "simple-icons";
+import { IconCard } from "@/components/search/icon-card";
 export function DropSection() {
 	const sections = useIconStore((state) => state.sections);
 	const { isActive, state, drop } = useDropIcon();
-	const icons = Object.keys(sections);
+	const icons = useMemo(() => {
+		if (!sections) return [];
+		return Object.keys(sections).map((slug) =>
+			Object.values(simpleIcons).find((i) => i.slug === slug)
+		);
+	}, [sections]);
 	return (
 		<div
 			ref={drop}
@@ -18,7 +24,11 @@ export function DropSection() {
 			data-testid="dustbin"
 		>
 			{isActive ? "Release to drop" : "Drag an icon here"}
-			<pre>{JSON.stringify(icons, null, 4)}</pre>
+			<div className={"flex gap-2 flex-wrap"}>
+				{icons.map((icon) => (
+					<IconCard key={icon.slug} icon={icon} />
+				))}
+			</div>
 		</div>
 	);
 }
