@@ -6,7 +6,7 @@ import { useDropIcon } from "@/components/search/hooks/use-drop-icon";
 export function DropSection() {
 	const sections = useIconStore((state) => state.sections);
 	const { isActive, state, drop } = useDropIcon();
-
+	const icons = Object.keys(sections);
 	return (
 		<div
 			ref={drop}
@@ -18,7 +18,7 @@ export function DropSection() {
 			data-testid="dustbin"
 		>
 			{isActive ? "Release to drop" : "Drag an icon here"}
-			<pre>{JSON.stringify(sections, null, 4)}</pre>
+			<pre>{JSON.stringify(icons, null, 4)}</pre>
 		</div>
 	);
 }
