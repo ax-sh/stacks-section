@@ -46,19 +46,19 @@ function DropSection() {
 	);
 }
 
-export function Search() {
-	const [term, setTerm] = useState("");
-	const filteredIcons = useMemo(() => {
+function useFilteredMemoIconsList(term: string) {
+	return useMemo(() => {
 		if (!term) return [];
 		const predicate = (i: SimpleIcon) => i.title.toLowerCase().includes(term);
 		const results = Object.values(icons).filter(predicate);
 
 		return results;
 	}, [term]);
+}
 
-	const counter = useStore((state) => state.counter);
-	const increment = useStore((state) => state.increment);
-	const decrement = useStore((state) => state.decrement);
+export function Search() {
+	const [term, setTerm] = useState("");
+	const filteredIcons = useFilteredMemoIconsList(term);
 
 	return (
 		<div className={"flex flex-col gap-4"}>
