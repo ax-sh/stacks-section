@@ -2,7 +2,6 @@
 import type { SimpleIcon } from "simple-icons";
 import * as icons from "simple-icons";
 // import { Image } from "@nextui-org/react";
-import SVG from "react-inlinesvg";
 import dynamic from "next/dynamic";
 
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -10,6 +9,7 @@ import React, { type CSSProperties, useMemo, useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { SearchInput } from "@/components/search-Input";
 import { StackIcon } from "@/assets/icons";
+import clsx from "clsx";
 
 const DndProvider = dynamic(async () => import("react-dnd").then((dnd) => dnd.DndProvider), {
 	ssr: false,
@@ -42,19 +42,6 @@ export default function IconCard({ icon }: { icon: SimpleIcon }) {
 	);
 }
 
-const style: CSSProperties = {
-	height: "12rem",
-	width: "12rem",
-	marginRight: "1.5rem",
-	marginBottom: "1.5rem",
-	color: "white",
-	padding: "1rem",
-	textAlign: "center",
-	fontSize: "1rem",
-	lineHeight: "normal",
-	float: "left",
-};
-
 function DropSection() {
 	const [{ canDrop, isOver }, drop] = useDrop(() => ({
 		accept: "ItemTypes.BOX",
@@ -74,8 +61,13 @@ function DropSection() {
 	}
 
 	return (
-		<div ref={drop} style={{ ...style, backgroundColor }} data-testid="dustbin">
-			{isActive ? "Release to drop" : "Drag a box here"}
+		<div
+			ref={drop}
+			className={clsx("h-40", "text-white p-4 text-center text-base", "grid place-content-center")}
+			style={{ backgroundColor }}
+			data-testid="dustbin"
+		>
+			{isActive ? "Release to drop" : "Drag an icon here"}
 		</div>
 	);
 }
