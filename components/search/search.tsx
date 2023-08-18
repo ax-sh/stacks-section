@@ -1,16 +1,14 @@
 "use client";
-import type { SimpleIcon } from "simple-icons";
-import * as icons from "simple-icons";
 // import { Image } from "@nextui-org/react";
 import dynamic from "next/dynamic";
 
 import { HTML5Backend } from "react-dnd-html5-backend";
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { useDrop } from "react-dnd";
 import { SearchInput } from "@/components/search/search-Input";
 import clsx from "clsx";
 import { IconCard } from "@/components/search/icon-card";
-import useStore from "@/store";
+import { useFilteredMemoIconsList } from "@/components/search/hooks/use-filtered-memo-icons-list";
 
 const DndProvider = dynamic(async () => import("react-dnd").then((dnd) => dnd.DndProvider), {
 	ssr: false,
@@ -44,16 +42,6 @@ function DropSection() {
 			{isActive ? "Release to drop" : "Drag an icon here"}
 		</div>
 	);
-}
-
-function useFilteredMemoIconsList(term: string) {
-	return useMemo(() => {
-		if (!term) return [];
-		const predicate = (i: SimpleIcon) => i.title.toLowerCase().includes(term);
-		const results = Object.values(icons).filter(predicate);
-
-		return results;
-	}, [term]);
 }
 
 export function Search() {

@@ -1,7 +1,7 @@
 import { SimpleIcon } from "simple-icons";
 import { StackIcon } from "@/assets/icons";
 import React from "react";
-import { useDragIcon } from "@/components/search/use-drag-icon";
+import { useDragIcon } from "@/components/search/hooks/use-drag-icon";
 import useIconStore from "@/store";
 import { Badge } from "@nextui-org/react";
 
@@ -11,11 +11,8 @@ export function IconCard({ icon }: { icon: SimpleIcon }) {
 	const addIconToSection = useIconStore((state) => state.addIconToSection);
 	const sections = useIconStore((state) => state.sections);
 
-	const { drag, opacity } = useDragIcon(icon, (slug: string) => {
-		addIconToSection(slug);
-	});
+	const { drag, opacity } = useDragIcon(icon, addIconToSection);
 	const count = icon.slug in sections ? sections[icon.slug] : false;
-	console.log(count);
 
 	return (
 		<div
