@@ -9,6 +9,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import React, { type CSSProperties, useMemo, useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { SearchInput } from "@/components/search-Input";
+import { StackIcon } from "@/assets/icons";
 
 const DndProvider = dynamic(async () => import("react-dnd").then((dnd) => dnd.DndProvider), {
 	ssr: false,
