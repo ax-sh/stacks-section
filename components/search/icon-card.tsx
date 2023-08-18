@@ -1,14 +1,18 @@
 import { SimpleIcon } from "simple-icons";
 import { StackIcon } from "@/assets/icons";
 import React from "react";
-import { useDragIcon } from "@/components/search/use-drag-icon";
+import { useDragIcon } from "@/components/search/hooks/use-drag-icon";
+import useIconStore from "@/store";
+import { Badge } from "@nextui-org/react";
 
 export type DropResult = any;
 
 export function IconCard({ icon }: { icon: SimpleIcon }) {
-	const { drag, opacity } = useDragIcon(icon, (slug: string) => {
-		console.log(slug, 34);
-	});
+	const addIconToSection = useIconStore((state) => state.addIconToSection);
+	const sections = useIconStore((state) => state.sections);
+
+	const { drag, opacity } = useDragIcon(icon, addIconToSection);
+	const count = icon.slug in sections ? sections[icon.slug] : false;
 
 	return (
 		<div
@@ -16,7 +20,13 @@ export function IconCard({ icon }: { icon: SimpleIcon }) {
 			className={"flex flex-col items-center justify-center"}
 			style={{ fill: `#${icon.hex}`, opacity }}
 		>
-			<StackIcon key={icon.slug} icon={icon} />
+			{count ? (
+				<Badge content={count} color="primary">
+					<StackIcon key={icon.slug} icon={icon} />
+				</Badge>
+			) : (
+				<StackIcon key={icon.slug} icon={icon} />
+			)}
 			<label className={"text-xs"}>{icon.title}</label>
 		</div>
 	);
