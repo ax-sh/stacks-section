@@ -5,42 +5,15 @@ import * as icons from "simple-icons";
 import dynamic from "next/dynamic";
 
 import { HTML5Backend } from "react-dnd-html5-backend";
-import React, { type CSSProperties, useMemo, useState } from "react";
-import { useDrag, useDrop } from "react-dnd";
-import { SearchInput } from "@/components/search-Input";
-import { StackIcon } from "@/assets/icons";
+import React, { useMemo, useState } from "react";
+import { useDrop } from "react-dnd";
+import { SearchInput } from "@/components/search/search-Input";
 import clsx from "clsx";
+import { IconCard } from "@/components/search/icon-card";
 
 const DndProvider = dynamic(async () => import("react-dnd").then((dnd) => dnd.DndProvider), {
 	ssr: false,
 });
-
-type DropResult = any;
-
-export default function IconCard({ icon }: { icon: SimpleIcon }) {
-	const [{ isDragging }, drag] = useDrag(() => ({
-		type: "ItemTypes.BOX",
-		item: { name },
-		end(item, monitor) {
-			const dropResult = monitor.getDropResult<DropResult>();
-			if (item && dropResult) {
-				console.log(`You dropped ${item.name} into ${dropResult.name}!`);
-			}
-		},
-		collect: (monitor) => ({
-			isDragging: monitor.isDragging(),
-			handlerId: monitor.getHandlerId(),
-		}),
-	}));
-
-	const opacity = isDragging ? 0.4 : 1;
-	return (
-		<div ref={drag} style={{ fill: "#" + icon.hex, opacity }}>
-			<StackIcon key={icon.slug} icon={icon} />
-			<label>{icon.title}</label>
-		</div>
-	);
-}
 
 function DropSection() {
 	const [{ canDrop, isOver }, drop] = useDrop(() => ({

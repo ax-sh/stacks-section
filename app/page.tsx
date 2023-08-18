@@ -2,7 +2,7 @@
 // import { Search } from "@nextui-org/shared-icons";
 // import { siSimpleicons } from "simple-icons";
 
-import { Search } from "@/components/search";
+import { Search } from "@/components/search/search";
 
 export default function Home() {
 	return (

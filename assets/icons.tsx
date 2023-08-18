@@ -1,6 +1,7 @@
 import React from "react";
 import { SimpleIcon } from "simple-icons";
 import SVG from "react-inlinesvg";
+import clsx from "clsx";
 
 export const SearchIcon = (props: any) => (
 	<svg
@@ -30,11 +31,16 @@ export const SearchIcon = (props: any) => (
 	</svg>
 );
 
-export function StackIcon({ icon }: { icon: SimpleIcon }) {
+export type StackIconProps = {
+	icon: SimpleIcon;
+	className?: string;
+	size?: number;
+};
+export function StackIcon({ icon, className, size }: StackIconProps) {
 	return (
 		<SVG
 			src={icon.svg}
-			className={`bg-white/20 rounded-md h-20 w-20 fill-[#${icon.hex}]`}
+			className={clsx(`bg-white/20 rounded-md h-10 w-auto fill-[#${icon.hex}]`, className)}
 			// preProcessor={(code) => {
 			// 	const i = code.replace(/role=".*?"/g, `fill="#${icon.hex}"`);
 			// 	// const i = code.replace(/role=".*?"/g, `fill="currentColor"`);
