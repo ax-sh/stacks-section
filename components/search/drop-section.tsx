@@ -11,9 +11,9 @@ export function DropSection() {
 		<div
 			ref={drop}
 			className={clsx("h-40", "text-white p-4 text-center text-base", "grid place-content-center", {
-				"bg-[#222]": state === "default",
-				"bg-[#BDB76B]": state === "can_drop",
-				"bg-[#00f]": state === "active",
+				"bg-[#222]": state === "DEFAULT",
+				"bg-[#BDB76B]": state === "CAN_DROP",
+				"bg-[#00f]": state === "ACTIVE",
 			})}
 			data-testid="dustbin"
 		>

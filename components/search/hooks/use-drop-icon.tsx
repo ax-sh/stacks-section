@@ -1,6 +1,7 @@
 import { useDrop } from "react-dnd";
 import { useMemo } from "react";
 
+type DropStates = "ACTIVE" | "CAN_DROP" | "DEFAULT";
 export function useDropIcon() {
 	const [{ canDrop, isOver }, drop] = useDrop(() => ({
 		accept: "ItemTypes.BOX",
@@ -11,13 +12,13 @@ export function useDropIcon() {
 		}),
 	}));
 	const isActive = canDrop && isOver;
-	const state = useMemo(() => {
+	const state: DropStates = useMemo(() => {
 		if (isActive) {
-			return "active";
+			return "ACTIVE";
 		} else if (canDrop) {
-			return "can_drop";
+			return "CAN_DROP";
 		} else {
-			return "default";
+			return "DEFAULT";
 		}
 	}, [isActive, canDrop]);
 	return { canDrop, isActive, drop, state };
