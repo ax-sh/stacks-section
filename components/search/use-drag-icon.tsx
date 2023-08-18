@@ -3,7 +3,7 @@ import { useDrag } from "react-dnd";
 import { DropResult } from "@/components/search/icon-card";
 
 export function useDragIcon(icon: SimpleIcon, callback: CallableFunction) {
-	const [{ isDragging }, drag] = useDrag(() => ({
+	const [{ isDragging, opacity }, drag] = useDrag(() => ({
 		type: "ItemTypes.BOX",
 		item: icon,
 		end(item, monitor) {
@@ -17,7 +17,8 @@ export function useDragIcon(icon: SimpleIcon, callback: CallableFunction) {
 		collect: (monitor) => ({
 			isDragging: monitor.isDragging(),
 			handlerId: monitor.getHandlerId(),
+			opacity: monitor.isDragging() ? 0.5 : 1,
 		}),
 	}));
-	return { isDragging, drag };
+	return { isDragging, drag, opacity };
 }
