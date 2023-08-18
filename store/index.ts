@@ -1,11 +1,12 @@
 import { create } from "zustand";
-const useStore = create((set, get) => ({
-	counter: 0,
-	sections: { slug: 2 },
-	increment: () => set((state) => ({ counter: state.counter + 1 })),
-	decrement: () => set((state) => ({ counter: state.counter - 1 })),
-	addIconToSection(slug: string) {
-		set((state) => ({ selector: { ...state.selector, [slug]: 3 } }));
-	},
+
+interface IconState {
+	sections: Record<string, string>;
+	addIconToSection: (slug: string) => void;
+}
+
+const useIconStore = create<IconState>()((set) => ({
+	sections: {},
+	addIconToSection: (slug) => set((state) => ({ sections: { ...state.sections, [slug]: "1" } })),
 }));
-export default useStore;
+export default useIconStore;

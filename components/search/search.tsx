@@ -65,7 +65,7 @@ export function Search() {
 			<DndProvider backend={HTML5Backend}>
 				<SearchInput term={term} setTerm={setTerm} />
 				<div className={"overflow-auto h-[25rem]"}>
-					<div className={"flex flex-wrap gap-2"}>
+					<div className={"py-5 flex flex-wrap gap-2"}>
 						{filteredIcons.map((icon) => (
 							<IconCard key={icon.slug} icon={icon} />
 						))}
