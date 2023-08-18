@@ -10,6 +10,7 @@ import { useDrop } from "react-dnd";
 import { SearchInput } from "@/components/search/search-Input";
 import clsx from "clsx";
 import { IconCard } from "@/components/search/icon-card";
+import useStore from "@/store";
 
 const DndProvider = dynamic(async () => import("react-dnd").then((dnd) => dnd.DndProvider), {
 	ssr: false,
@@ -54,6 +55,10 @@ export function Search() {
 
 		return results;
 	}, [term]);
+
+	const counter = useStore((state) => state.counter);
+	const increment = useStore((state) => state.increment);
+	const decrement = useStore((state) => state.decrement);
 
 	return (
 		<div className={"flex flex-col gap-4"}>

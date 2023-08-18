@@ -2,13 +2,18 @@ import { SimpleIcon } from "simple-icons";
 import { StackIcon } from "@/assets/icons";
 import React from "react";
 import { useDragIcon } from "@/components/search/use-drag-icon";
+import useStore from "@/store";
 
 export type DropResult = any;
 
 export function IconCard({ icon }: { icon: SimpleIcon }) {
+	const addIconToSection = useStore((state) => state.addIconToSection);
+	const sections = useStore((state) => state.sections);
+
 	const { drag, opacity } = useDragIcon(icon, (slug: string) => {
-		console.log(slug, 34);
+		addIconToSection(slug);
 	});
+	console.log(sections);
 
 	return (
 		<div
