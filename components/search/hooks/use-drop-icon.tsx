@@ -1,6 +1,6 @@
 import { useDrop } from "react-dnd";
 import { useMemo } from "react";
-
+// TODO use https://docs.dndkit.com/
 type DropStates = "ACTIVE" | "CAN_DROP" | "DEFAULT";
 export function useDropIcon() {
 	const [{ canDrop, isOver }, drop] = useDrop(() => ({
