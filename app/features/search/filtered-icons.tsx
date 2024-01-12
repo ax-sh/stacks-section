@@ -1,11 +1,12 @@
 import React, { PropsWithChildren } from "react";
-import { useFilteredMemoIconsList } from "@/components/search/hooks/use-filtered-memo-icons-list";
 
 import { Badge } from "@nextui-org/react";
-import { StackIcon } from "@/assets/icons";
+
 import { type UniqueIdentifier, useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import type { SimpleIcon } from "simple-icons";
+import { StackIcon } from "@/components/icons";
+import { useFilteredMemoIconsList } from "@/app/features/search/hooks/use-filtered-memo-icons-list";
 
 function DraggableIcon({
 	children,
