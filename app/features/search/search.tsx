@@ -31,7 +31,7 @@ export function Search() {
 		<div className={"flex flex-col gap-4"}>
 			<SearchInput term={term} setTerm={setTerm} />
 			<FilteredIcons term={term} />
-			<h1>{term}</h1>
+
 			<Example />
 		</div>
 	);

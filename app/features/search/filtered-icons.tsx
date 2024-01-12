@@ -32,5 +32,3 @@ export function FilteredIcons({ term }: { term: string }) {
 		</div>
 	);
 }
-
-/*				 */
