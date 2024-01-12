@@ -16,8 +16,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 
 https://github.com/react-dnd/react-dnd
+
 https://nextui.org/
+
 https://github.com/prettier/eslint-config-prettier
+
 https://www.npmjs.com/package/simple-icons
+
 https://nextjs.org/
+
 react-dnd
