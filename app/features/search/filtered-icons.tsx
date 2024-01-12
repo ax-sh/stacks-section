@@ -1,20 +1,10 @@
-import React, { type PropsWithChildren } from 'react';
-import { Badge } from '@nextui-org/react';
+import React from 'react';
 import type { SimpleIcon } from 'simple-icons';
 import { StackIcon } from '@/components/icons';
 import { useFilteredMemoIconsList } from '@/app/features/search/hooks/use-filtered-memo-icons-list';
 import { DraggableIcon } from '@/app/features/draggable';
 import useIconStore from '@/store';
-
-function IconWithBadge({ content, children }: PropsWithChildren<{ content?: number }>) {
-  return Number(content) > 0 ? (
-    <Badge content={content} color='primary'>
-      {children}
-    </Badge>
-  ) : (
-    children
-  );
-}
+import { IconWithBadge } from '@/app/ui/icon-with-badge';
 
 export function StackIconCard({ icon }: { icon: SimpleIcon }) {
   const getSlugCount = useIconStore((state) => state.getSlugCount);
