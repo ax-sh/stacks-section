@@ -4,6 +4,7 @@ module.exports = {
 		"unicorn/no-array-for-each": "off",
 		"import/extensions": "off",
 		"capitalized-comments": "off",
+		"unicorn/no-array-callback-reference": "off",
 	},
 	overrides: [
 		{
