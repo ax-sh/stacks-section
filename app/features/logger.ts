@@ -1,4 +1,4 @@
-import pino from "pino";
+import pino, { LoggerOptions } from "pino";
 
 const config = {
 	serverUrl: process.env.REACT_APP_API_PATH || "http://localhost:3000",
@@ -6,28 +6,38 @@ const config = {
 	publicUrl: process.env.PUBLIC_URL,
 };
 
-const pinoConfig = {
+const pinoConfig: LoggerOptions = {
+	timestamp: true,
 	browser: {
 		asObject: true,
+		write: {
+			info(o) {
+				console.table(o);
+			},
+			error: function (o) {
+				//process error log object
+			},
+		},
 	},
 };
-
-if (config.serverUrl) {
-	pinoConfig.browser.transmit = {
-		level: "info",
-		send: (level, logEvent) => {
-			const msg = logEvent.messages[0];
-
-			const headers = {
-				"Access-Control-Allow-Origin": "*",
-				"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
-				type: "application/json",
-			};
-			let blob = new Blob([JSON.stringify({ msg, level })], headers);
-			navigator.sendBeacon(`${config.serverUrl}/log`, blob);
-		},
-	};
-}
+// todo
+// if (config.serverUrl) {
+// 	pinoConfig.browser!.transmit = {
+// 		level: "info",
+// 		send: (level, logEvent) => {
+//
+// 			const msg = logEvent.messages[0];
+//
+// 			const headers = {
+// 				"Access-Control-Allow-Origin": "*",
+// 				"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+// 				type: "application/json",
+// 			};
+// 			let blob = new Blob([JSON.stringify({ msg, level })], headers);
+// 			navigator.sendBeacon(`${config.serverUrl}/log`, blob);
+// 		},
+// 	};
+// }
 
 const logger = pino(pinoConfig);
 
