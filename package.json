@@ -10,6 +10,7 @@
     "test": "xo"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.1.0",
     "@nextui-org/link": "^2.0.11",
     "@nextui-org/navbar": "^2.0.11",
     "@nextui-org/react": "^2.0.11",
