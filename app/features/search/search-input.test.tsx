@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { SearchInput } from "@/app/features/search-input";
+import { SearchInput } from "@/app/features/search/search-input";
 
 describe(SearchInput.name, () => {
 	it("should load search component", () => {
