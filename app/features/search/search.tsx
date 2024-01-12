@@ -36,7 +36,6 @@ export function Search() {
   const getIcons = useIconStore((state) => state.getIcons);
 
   const icons = getIcons();
-  console.log(icons, 77);
 
   return (
     <div className={'flex flex-col gap-4'}>
