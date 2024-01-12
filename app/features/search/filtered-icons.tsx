@@ -21,7 +21,7 @@ export function StackIconCard({ icon }: { icon: SimpleIcon }) {
 
   return (
     <div
-      className={'flex flex-col items-center justify-center bg-white/10 p-4 rounded'}
+      className={'flex flex-col items-center justify-center bg-white/10 p-4 gap-2 rounded'}
       style={{ fill: `#${icon.hex}` }}
     >
       <IconWithBadge content={getSlugCount(icon.slug)}>
