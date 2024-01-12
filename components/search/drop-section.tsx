@@ -2,8 +2,6 @@ import clsx from "clsx";
 import React, { useMemo } from "react";
 import * as simpleIcons from "simple-icons";
 import useIconStore from "@/store";
-// import { useDropIcon } from "@/components/search/hooks/use-drop-icon";
-import { IconCard } from "@/components/search/icon-card";
 
 export function DropSection() {
 	const sections = useIconStore((state) => state.sections);

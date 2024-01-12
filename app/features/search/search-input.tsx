@@ -1,6 +1,5 @@
 import React from "react";
 import { Input } from "@nextui-org/react";
-import { SearchIcon } from "@/assets/icons";
 
 export function SearchInput({ setTerm, term }: { term: string; setTerm: (term: string) => void }) {
 	return (
@@ -33,7 +32,9 @@ export function SearchInput({ setTerm, term }: { term: string; setTerm: (term: s
 			startContent={
 				<SearchIcon className="text-black/50 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
 			}
-			onChange={(event) => { setTerm(event.target.value); }}
+			onChange={(event) => {
+				setTerm(event.target.value);
+			}}
 			value={term}
 		/>
 	);

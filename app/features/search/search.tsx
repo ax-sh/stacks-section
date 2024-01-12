@@ -7,7 +7,6 @@ import { SearchInput } from "@/app/features/search/search-input";
 import { Draggable } from "@/app/features/draggable";
 import { Droppable } from "@/app/features/droppable";
 import { FilteredIcons, StackIconCard } from "@/app/features/search/filtered-icons";
-import { StackIcon } from "@/assets/icons";
 
 function Example() {
 	const [parent, setParent] = useState<UniqueIdentifier | undefined>(undefined);
