@@ -22,7 +22,6 @@ describe(Search.name, () => {
 			"foo"
 		);
 		await user.click(screen.getByText(/search/i));
-		screen.logTestingPlaygroundURL();
 
 		expect(
 			screen.getByRole("heading", {
