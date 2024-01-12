@@ -33,15 +33,16 @@ function DndWrapper({ children, setDraggedIcon }: PropsWithChildren<{ setDragged
 export function Search() {
   const [term, setTerm] = useState('');
   const [draggedIcon, setDraggedIcon] = useState<any | null>(null);
-  const sections = useIconStore((state) => state.sections);
+  const getIcons = useIconStore((state) => state.getIcons);
 
-  const icons = useMemo(() => {
-    if (!sections) return [];
-    return Object.keys(sections).map((slug) =>
-      Object.values(simpleIcons).find((i) => i.slug === slug)
-    );
-  }, [sections]);
-  console.log(icons, sections, 77);
+  // const icons = useMemo(() => {
+  //   if (!sections) return [];
+  //   return Object.keys(sections).map((slug) =>
+  //     Object.values(simpleIcons).find((i) => i.slug === slug)
+  //   );
+  // }, [sections]);
+  const icons = getIcons();
+  console.log(icons, 77);
 
   return (
     <div className={'flex flex-col gap-4'}>
@@ -53,7 +54,15 @@ export function Search() {
           {!!draggedIcon && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
         </DragOverlay>
         <IconDroppable id={'drop'} className={'bg-gray-950 p-4 h-40 relative'}>
-          <IconDroppablePlaceholder />
+          {!icons.length ? (
+            <IconDroppablePlaceholder />
+          ) : (
+            <div className={'flex flex-wrap gap-2 '}>
+              {icons.map((icon) => (
+                <StackIconCard key={icon.slug} icon={icon} />
+              ))}
+            </div>
+          )}
         </IconDroppable>
       </DndWrapper>
     </div>
