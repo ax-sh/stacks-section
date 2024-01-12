@@ -8,7 +8,11 @@ type IconState = {
 const useIconStore = create<IconState>()((set) => ({
   sections: {},
   addIconToSection(slug) {
-    set((state) => ({ sections: { ...state.sections, [slug]: 1 } }));
+    set((state) => {
+      const prev = state.sections[slug] ?? 1;
+
+      return { sections: { ...state.sections, [slug]: prev + 1 } };
+    });
   }
 }));
 export default useIconStore;
