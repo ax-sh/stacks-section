@@ -6,9 +6,14 @@ import { StackIcon } from "@/assets/icons";
 import { type UniqueIdentifier, useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 
-function DraggableIcon({ children, id }: PropsWithChildren<{ id: UniqueIdentifier }>) {
+function DraggableIcon({
+	children,
+	id,
+	data,
+}: PropsWithChildren<{ id: UniqueIdentifier; data: any }>) {
 	const { attributes, listeners, setNodeRef, transform } = useDraggable({
 		id,
+		data,
 	});
 	const style = {
 		// Outputs `translate3d(x, y, 0)`
@@ -22,26 +27,31 @@ function DraggableIcon({ children, id }: PropsWithChildren<{ id: UniqueIdentifie
 	);
 }
 
+function IconWithBadge({ content, children }: PropsWithChildren<{ content?: number }>) {
+	return content ? (
+		<Badge content={content} color="primary">
+			{children}
+		</Badge>
+	) : (
+		children
+	);
+}
+
 export function FilteredIcons({ term }: { term: string }) {
 	const filteredIcons = useFilteredMemoIconsList(term);
 	return (
 		<div className={"overflow-auto h-80"}>
 			<div className={"flex flex-wrap gap-4"}>
 				{filteredIcons.map((icon) => {
-					const count = 0;
 					return (
-						<DraggableIcon key={icon.slug} id={icon.slug}>
+						<DraggableIcon key={icon.slug} id={icon.slug} data={icon}>
 							<div
 								className={"flex flex-col items-center justify-center bg-white/10 p-4 rounded"}
 								style={{ fill: `#${icon.hex}` }}
 							>
-								{count ? (
-									<Badge content={count} color="primary">
-										<StackIcon key={icon.slug} icon={icon} />
-									</Badge>
-								) : (
+								<IconWithBadge>
 									<StackIcon key={icon.slug} icon={icon} />
-								)}
+								</IconWithBadge>
 								<label className={"text-xs"}>{icon.title}</label>
 							</div>
 						</DraggableIcon>

@@ -27,21 +27,24 @@ function Example() {
 
 export function Search() {
 	const [term, setTerm] = useState("");
-	const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
+	const [draggedIcon, setDraggedIcon] = useState<any | null>(null);
 	function handleDragEnd({ over, active, ...rest }: DragEndEvent) {
-		setActiveId(null);
-		console.log(rest, "<<<<<<");
+		setDraggedIcon(null);
 	}
 	function handleDragStart({ over, active, ...rest }: DragEndEvent) {
-		setActiveId(active.id);
-		console.log("start", rest, "<<<<<<");
+		// setActiveId(active.id);
+		setDraggedIcon(active.data.current);
+		console.log("start", rest, active, "<<<<<<");
 	}
 	return (
 		<div className={"flex flex-col gap-4"}>
 			<SearchInput term={term} setTerm={setTerm} />
 			<DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
 				<FilteredIcons term={term} />
-				<DragOverlay>{!!activeId && "<StackIcon key={activeId} icon={activeId} />"}</DragOverlay>
+
+				<DragOverlay>
+					{!!draggedIcon && <StackIcon key={draggedIcon.slug} icon={draggedIcon} />}
+				</DragOverlay>
 			</DndContext>
 
 			<Example />
