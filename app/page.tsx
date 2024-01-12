@@ -1,4 +1,5 @@
-import { Search } from "@/app/features/search";
+import { Search } from "./features/search/search";
+
 
 export default function Home() {
 	return (
