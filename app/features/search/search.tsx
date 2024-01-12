@@ -54,6 +54,14 @@ function DndWrapper({ children, setDraggedIcon }: PropsWithChildren<{ setDragged
   );
 }
 
+function IconDroppablePlaceholder() {
+  return (
+    <div className={'absolute inset-0 grid place-content-center'}>
+      <TbDragDrop2 size={64} />
+    </div>
+  );
+}
+
 export function Search() {
   const [term, setTerm] = useState('');
   const [draggedIcon, setDraggedIcon] = useState<any | null>(null);
@@ -68,9 +76,7 @@ export function Search() {
           {!!draggedIcon && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
         </DragOverlay>
         <IconDroppable id={'drop'} className={'bg-gray-950 p-4 h-40 relative'}>
-          <div className={'absolute inset-0 grid place-content-center'}>
-            <TbDragDrop2 size={64} />
-          </div>
+          <IconDroppablePlaceholder />
         </IconDroppable>
       </DndWrapper>
     </div>
