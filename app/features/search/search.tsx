@@ -1,15 +1,20 @@
 'use client';
 
-import React, { Dispatch, type PropsWithChildren, SetStateAction, useMemo, useState } from 'react';
+import React, {
+  type Dispatch,
+  type PropsWithChildren,
+  type SetStateAction,
+  useMemo,
+  useState
+} from 'react';
 import { DndContext, DragOverlay } from '@dnd-kit/core';
 import type { DragEndEvent } from '@dnd-kit/core/dist/types';
-
+import type { SimpleIcon } from 'simple-icons';
 import { SearchInput } from '@/app/features/search/search-input';
 import { FilteredIcons, StackIconCard } from '@/app/features/search/filtered-icons';
 import logger from '@/app/features/logger';
 import useIconStore from '@/store';
 import { IconDroppable, IconDroppablePlaceholder } from '@/app/features/droppable';
-import type { SimpleIcon } from 'simple-icons';
 
 const child = logger.child({ type: 'search' });
 child.info('search parent');

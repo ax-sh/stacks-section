@@ -8,7 +8,8 @@ module.exports = {
     '@typescript-eslint/triple-slash-reference': 'off',
     'no-lone-blocks': 'off',
     '@typescript-eslint/no-unsafe-assignment': 'off',
-    'n/prefer-global/process': 'off'
+    'n/prefer-global/process': 'off',
+    'no-implicit-coercion': 'off'
   },
   overrides: [
     {
