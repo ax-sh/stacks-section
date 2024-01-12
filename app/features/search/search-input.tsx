@@ -1,5 +1,6 @@
 import React from "react";
 import { Input } from "@nextui-org/react";
+import { SearchIcon } from "@/components/icons";
 
 export function SearchInput({ setTerm, term }: { term: string; setTerm: (term: string) => void }) {
 	return (
