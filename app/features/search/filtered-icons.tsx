@@ -13,13 +13,14 @@ function DraggableIcon({
   id,
   data
 }: PropsWithChildren<{ id: UniqueIdentifier; data: any }>) {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+  const { isDragging, attributes, listeners, setNodeRef, transform } = useDraggable({
     id,
     data
   });
   const style = {
     // Outputs `translate3d(x, y, 0)`
-    transform: CSS.Translate.toString(transform)
+    transform: CSS.Translate.toString(transform),
+    visibility: isDragging ? 'hidden' : 'visible'
   };
 
   return (
