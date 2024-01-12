@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import { DndContext, type UniqueIdentifier } from "@dnd-kit/core";
+import type { DragEndEvent } from "@dnd-kit/core/dist/types";
 import { SearchInput } from "@/app/features/search/search-input";
 import { Draggable } from "@/app/features/draggable";
-import { DndContext, UniqueIdentifier } from "@dnd-kit/core";
 import { Droppable } from "@/app/features/droppable";
-import type { DragEndEvent } from "@dnd-kit/core/dist/types";
 import { FilteredIcons } from "@/app/features/search/filtered-icons";
 
 function Example() {
@@ -14,7 +14,7 @@ function Example() {
 
 	return (
 		<DndContext onDragEnd={handleDragEnd}>
-			{!parent ? draggable : null}
+			{parent ? null : draggable}
 			<Droppable id="droppable">{parent === "droppable" ? draggable : "Drop here"}</Droppable>
 		</DndContext>
 	);

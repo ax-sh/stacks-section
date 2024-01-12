@@ -1,5 +1,5 @@
-import React, { PropsWithChildren } from "react";
-import { UniqueIdentifier, useDroppable } from "@dnd-kit/core";
+import React, { type PropsWithChildren } from "react";
+import { type UniqueIdentifier, useDroppable } from "@dnd-kit/core";
 
 export function Droppable(props: PropsWithChildren<{ id: UniqueIdentifier }>) {
 	const { isOver, setNodeRef } = useDroppable({

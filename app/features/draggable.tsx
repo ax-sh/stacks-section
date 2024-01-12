@@ -1,7 +1,6 @@
-import React, { PropsWithChildren } from "react";
-import { useDraggable } from "@dnd-kit/core";
+import React, { type PropsWithChildren } from "react";
+import { useDraggable , type UniqueIdentifier } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
-import { UniqueIdentifier } from "@dnd-kit/core";
 
 export function Draggable(props: PropsWithChildren<{ id: UniqueIdentifier }>) {
 	const { attributes, listeners, setNodeRef, transform } = useDraggable({
