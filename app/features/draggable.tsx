@@ -1,5 +1,5 @@
-import React, { PropsWithChildren } from 'react';
-import { UniqueIdentifier, useDraggable } from '@dnd-kit/core';
+import React, { type PropsWithChildren } from 'react';
+import { type UniqueIdentifier, useDraggable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
 
 export function DraggableIcon({

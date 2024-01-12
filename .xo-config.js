@@ -7,7 +7,8 @@ module.exports = {
     'unicorn/no-array-callback-reference': 'off',
     '@typescript-eslint/triple-slash-reference': 'off',
     'no-lone-blocks': 'off',
-    '@typescript-eslint/no-unsafe-assignment': 'off'
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    'n/prefer-global/process': 'off'
   },
   overrides: [
     {
