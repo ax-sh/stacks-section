@@ -2,7 +2,7 @@ import pino, { Level, LevelMapping, type LoggerOptions } from 'pino';
 import { color, red, green, gray, cyan, cyanBright } from 'console-log-colors';
 
 const config = {
-  serverUrl: process.env.REACT_APP_API_PATH || 'http://localhost:3000',
+  serverUrl: process.env.REACT_APP_API_PATH ?? 'http://localhost:3000',
   env: process.env.NODE_ENV,
   publicUrl: process.env.PUBLIC_URL
 };
@@ -75,5 +75,7 @@ const pinoConfig: LoggerOptions = {
 
 const logger = pino(pinoConfig);
 
-export const log = (message: unknown) => { logger.info(message); };
+export const log = (message: unknown) => {
+  logger.info(message);
+};
 export default logger;
