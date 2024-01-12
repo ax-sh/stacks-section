@@ -44,7 +44,7 @@ export function StackIconCard({ icon }: { icon: SimpleIcon }) {
 			className={"flex flex-col items-center justify-center bg-white/10 p-4 rounded"}
 			style={{ fill: `#${icon.hex}` }}
 		>
-			<IconWithBadge>
+			<IconWithBadge content={3}>
 				<StackIcon key={icon.slug} icon={icon} />
 			</IconWithBadge>
 			<label className={"text-xs"}>{icon.title}</label>

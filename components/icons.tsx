@@ -40,7 +40,7 @@ export function StackIcon({ icon, className, size }: StackIconProps) {
 	return (
 		<SVG
 			src={icon.svg}
-			className={clsx(`bg-white/20 rounded-md h-6 w-auto`, className)}
+			className={clsx(`bg-white/20 rounded-md h-6 w-auto aspect-square`, className)}
 			fill={icon.hex}
 			// preProcessor={(code) => {
 			// 	const i = code.replace(/role=".*?"/g, `fill="#${icon.hex}"`);
