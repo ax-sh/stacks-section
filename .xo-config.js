@@ -12,6 +12,7 @@ module.exports = {
 			files: ["**/*config.ts", "**/*config.js"],
 			rules: {
 				"unicorn/prefer-module": "off",
+				"new-cap": "off",
 			},
 		},
 	],
