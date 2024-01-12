@@ -1,12 +1,6 @@
 'use client';
 
-import React, {
-  type Dispatch,
-  type PropsWithChildren,
-  type SetStateAction,
-  useMemo,
-  useState
-} from 'react';
+import React, { type Dispatch, type PropsWithChildren, type SetStateAction, useState } from 'react';
 import { DndContext, DragOverlay } from '@dnd-kit/core';
 import type { DragEndEvent } from '@dnd-kit/core/dist/types';
 import type { SimpleIcon } from 'simple-icons';
@@ -26,7 +20,7 @@ function DndWrapper({
   const addIconToSection = useIconStore((state) => state.addIconToSection);
   function handleDragEnd({ over, active, ...rest }: DragEndEvent) {
     setDraggedIcon(undefined);
-    addIconToSection(active.data.current?.slug);
+    addIconToSection(active.data.current?.slug as string);
   }
 
   function handleDragStart({ over, active, ...rest }: DragEndEvent) {
