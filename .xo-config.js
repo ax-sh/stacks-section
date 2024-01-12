@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['prettier'],
+  extends: ['next/core-web-vitals', 'prettier'],
   rules: {
     'unicorn/no-array-for-each': 'off',
     'import/extensions': 'off',
