@@ -7,7 +7,10 @@ import { SearchInput } from "@/app/features/search/search-input";
 import { FilteredIcons, StackIconCard } from "@/app/features/search/filtered-icons";
 import { TbDragDrop2 } from "react-icons/tb";
 import { Example } from "@/app/features/search/example";
+import logger from "@/app/features/logger";
 
+const child = logger.child({ ui: "search" });
+child.info("hello child!");
 export function Search() {
 	const [term, setTerm] = useState("");
 	const [draggedIcon, setDraggedIcon] = useState<any | null>(null);
