@@ -6,9 +6,9 @@ export function FilteredIcons({ term }: { term: string }) {
 	return (
 		<div className={"overflow-auto h-[25rem]"}>
 			<div className={"py-5 flex flex-wrap gap-2"}>
-				{filteredIcons.map((icon) => (
-					<div>{icon.slug}</div>
-				))}
+				{filteredIcons.map((icon) => {
+					return <div>{icon.slug}</div>;
+				})}
 			</div>
 		</div>
 	);
