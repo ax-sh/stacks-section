@@ -4,9 +4,10 @@ import type { SimpleIcon } from 'simple-icons';
 import { StackIcon } from '@/components/icons';
 import { useFilteredMemoIconsList } from '@/app/features/search/hooks/use-filtered-memo-icons-list';
 import { DraggableIcon } from '@/app/features/draggable';
+import useIconStore from '@/store';
 
 function IconWithBadge({ content, children }: PropsWithChildren<{ content?: number }>) {
-  return content ? (
+  return Number(content) > 0 ? (
     <Badge content={content} color='primary'>
       {children}
     </Badge>
@@ -16,12 +17,14 @@ function IconWithBadge({ content, children }: PropsWithChildren<{ content?: numb
 }
 
 export function StackIconCard({ icon }: { icon: SimpleIcon }) {
+  const getSlugCount = useIconStore((state) => state.getSlugCount);
+
   return (
     <div
       className={'flex flex-col items-center justify-center bg-white/10 p-4 rounded'}
       style={{ fill: `#${icon.hex}` }}
     >
-      <IconWithBadge content={3}>
+      <IconWithBadge content={getSlugCount(icon.slug)}>
         <StackIcon key={icon.slug} icon={icon} />
       </IconWithBadge>
       <label className={'text-xs'}>{icon.title}</label>
