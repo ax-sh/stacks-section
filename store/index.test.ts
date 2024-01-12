@@ -1,6 +1,10 @@
 import useIconStore from '@/store/index';
 
+const initialStoreState = useIconStore.getState();
 describe(useIconStore.name, () => {
+  beforeEach(() => {
+    useIconStore.setState(initialStoreState, true);
+  });
   it('should load store', () => {
     expect(useIconStore.getState()).toBeDefined();
   });
