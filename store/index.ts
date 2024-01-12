@@ -16,6 +16,7 @@ const useIconStore = create<IconState>()((set, get) => ({
     });
   },
   getIcons() {
+    console.log(434);
     const { sections } = get();
     if (!sections) return [];
     return Object.keys(sections).map((slug) =>
