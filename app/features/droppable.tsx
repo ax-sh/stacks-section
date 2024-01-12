@@ -10,7 +10,7 @@ export function Droppable(props: PropsWithChildren<{ id: UniqueIdentifier }>) {
 	};
 
 	return (
-		<div ref={setNodeRef} style={style}>
+		<div ref={setNodeRef} style={style} className={isOver ? "bg-red-400" : ""}>
 			{props.children}
 		</div>
 	);
