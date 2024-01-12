@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { DndContext, type UniqueIdentifier } from "@dnd-kit/core";
+import { DndContext, DragOverlay, type UniqueIdentifier } from "@dnd-kit/core";
 import type { DragEndEvent } from "@dnd-kit/core/dist/types";
 import { SearchInput } from "@/app/features/search/search-input";
 import { Draggable } from "@/app/features/draggable";
 import { Droppable } from "@/app/features/droppable";
 import { FilteredIcons } from "@/app/features/search/filtered-icons";
+import { StackIcon } from "@/assets/icons";
 
 function Example() {
 	const [parent, setParent] = useState<UniqueIdentifier | undefined>(undefined);
@@ -26,14 +27,21 @@ function Example() {
 
 export function Search() {
 	const [term, setTerm] = useState("");
-	function handleDragEnd() {
-		console.log(2323);
+	const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
+	function handleDragEnd({ over, active, ...rest }: DragEndEvent) {
+		setActiveId(null);
+		console.log(rest, "<<<<<<");
+	}
+	function handleDragStart({ over, active, ...rest }: DragEndEvent) {
+		setActiveId(active.id);
+		console.log("start", rest, "<<<<<<");
 	}
 	return (
 		<div className={"flex flex-col gap-4"}>
 			<SearchInput term={term} setTerm={setTerm} />
-			<DndContext onDragEnd={handleDragEnd}>
+			<DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
 				<FilteredIcons term={term} />
+				<DragOverlay>{!!activeId && "<StackIcon key={activeId} icon={activeId} />"}</DragOverlay>
 			</DndContext>
 
 			<Example />
