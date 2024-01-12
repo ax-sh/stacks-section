@@ -1,9 +1,9 @@
 'use client';
 
-import React, { type PropsWithChildren, useMemo, useState } from 'react';
+import React, { Dispatch, type PropsWithChildren, SetStateAction, useMemo, useState } from 'react';
 import { DndContext, DragOverlay } from '@dnd-kit/core';
 import type { DragEndEvent } from '@dnd-kit/core/dist/types';
-import * as simpleIcons from 'simple-icons';
+
 import { SearchInput } from '@/app/features/search/search-input';
 import { FilteredIcons, StackIconCard } from '@/app/features/search/filtered-icons';
 import logger from '@/app/features/logger';
@@ -13,7 +13,10 @@ import { IconDroppable, IconDroppablePlaceholder } from '@/app/features/droppabl
 const child = logger.child({ type: 'search' });
 child.info('search parent');
 
-function DndWrapper({ children, setDraggedIcon }: PropsWithChildren<{ setDraggedIcon: any }>) {
+function DndWrapper({
+  children,
+  setDraggedIcon
+}: PropsWithChildren<{ setDraggedIcon: Dispatch<SetStateAction<unknown>> }>) {
   const addIconToSection = useIconStore((state) => state.addIconToSection);
   function handleDragEnd({ over, active, ...rest }: DragEndEvent) {
     setDraggedIcon(null);
@@ -33,7 +36,7 @@ function DndWrapper({ children, setDraggedIcon }: PropsWithChildren<{ setDragged
 
 export function Search() {
   const [term, setTerm] = useState('');
-  const [draggedIcon, setDraggedIcon] = useState<any | undefined>(null);
+  const [draggedIcon, setDraggedIcon] = useState<unknown | undefined>(null);
   const getIcons = useIconStore((state) => state.getIcons);
 
   const icons = getIcons();

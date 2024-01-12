@@ -78,4 +78,5 @@ const logger = pino(pinoConfig);
 export const log = (message: unknown) => {
   logger.info(message);
 };
+
 export default logger;
