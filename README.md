@@ -24,4 +24,4 @@ https://www.npmjs.com/package/simple-icons
 
 https://nextjs.org/
 
-react-dnd
+https://docs.dndkit.com/introduction/installation
