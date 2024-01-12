@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { type ReactElement } from "react";
-import { Search } from "@/app/features/search";
+import { Search } from "@/app/features/search/search";
 
 // setup function
 function setup(jsx: ReactElement) {

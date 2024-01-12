@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { useFilteredMemoIconsList } from "@/components/search/hooks/use-filtered-memo-icons-list";
-import { SearchInput } from "@/app/features/search-input";
+import { SearchInput } from "@/app/features/search/search-input";
 
 const DndProvider = dynamic(async () => import("react-dnd").then((dnd) => dnd.DndProvider), {
 	ssr: false,
