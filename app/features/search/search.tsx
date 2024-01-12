@@ -39,9 +39,15 @@ export function Search() {
   const [draggedIcon, setDraggedIcon] = useState<any | null>(null);
   function handleDragEnd({ over, active, ...rest }: DragEndEvent) {
     setDraggedIcon(null);
+    console.log('end over', over);
+    console.log('end active', active);
+    console.log('end rest', rest);
   }
   function handleDragStart({ over, active, ...rest }: DragEndEvent) {
     setDraggedIcon(active.data.current);
+    console.log('start over', over);
+    console.log('start active', active);
+    console.log('start rest', rest);
   }
   return (
     <div className={'flex flex-col gap-4'}>
