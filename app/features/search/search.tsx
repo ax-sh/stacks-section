@@ -3,12 +3,11 @@
 import React, { type PropsWithChildren, useMemo, useState } from 'react';
 import { DndContext, DragOverlay } from '@dnd-kit/core';
 import type { DragEndEvent } from '@dnd-kit/core/dist/types';
+import * as simpleIcons from 'simple-icons';
 import { SearchInput } from '@/app/features/search/search-input';
 import { FilteredIcons, StackIconCard } from '@/app/features/search/filtered-icons';
-
 import logger from '@/app/features/logger';
 import useIconStore from '@/store';
-import * as simpleIcons from 'simple-icons';
 import { IconDroppable, IconDroppablePlaceholder } from '@/app/features/droppable';
 
 const child = logger.child({ type: 'search' });
@@ -20,9 +19,11 @@ function DndWrapper({ children, setDraggedIcon }: PropsWithChildren<{ setDragged
     setDraggedIcon(null);
     addIconToSection(active.data.current?.slug);
   }
+
   function handleDragStart({ over, active, ...rest }: DragEndEvent) {
     setDraggedIcon(active.data.current);
   }
+
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
       {children}
@@ -32,7 +33,7 @@ function DndWrapper({ children, setDraggedIcon }: PropsWithChildren<{ setDragged
 
 export function Search() {
   const [term, setTerm] = useState('');
-  const [draggedIcon, setDraggedIcon] = useState<any | null>(null);
+  const [draggedIcon, setDraggedIcon] = useState<any | undefined>(null);
   const getIcons = useIconStore((state) => state.getIcons);
 
   const icons = getIcons();
@@ -43,11 +44,11 @@ export function Search() {
       <DndWrapper setDraggedIcon={setDraggedIcon}>
         <FilteredIcons term={term} />
         <DragOverlay>
-          {/*note needed for fixing overflow hidden issue*/}
-          {!!draggedIcon && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
+          {/* note needed for fixing overflow hidden issue */}
+          {Boolean(draggedIcon) && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
         </DragOverlay>
         <IconDroppable id={'drop'} className={'bg-gray-950 p-4 h-40 relative'}>
-          {!icons.length ? (
+          {icons.length === 0 ? (
             <IconDroppablePlaceholder />
           ) : (
             <div className={'flex flex-wrap gap-2 '}>

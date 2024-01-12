@@ -1,7 +1,5 @@
-import React, { PropsWithChildren } from 'react';
-
+import React, { type PropsWithChildren } from 'react';
 import { Badge } from '@nextui-org/react';
-
 import { type UniqueIdentifier, useDraggable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
 import type { SimpleIcon } from 'simple-icons';
@@ -63,13 +61,11 @@ export function FilteredIcons({ term }: { term: string }) {
   return (
     <div className={'overflow-auto h-80'}>
       <div className={'flex flex-wrap gap-4'}>
-        {filteredIcons.map((icon) => {
-          return (
+        {filteredIcons.map((icon) => (
             <DraggableIcon key={icon.slug} id={icon.slug} data={icon}>
               <StackIconCard icon={icon} />
             </DraggableIcon>
-          );
-        })}
+          ))}
       </div>
     </div>
   );

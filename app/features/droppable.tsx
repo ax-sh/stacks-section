@@ -1,5 +1,5 @@
-import React, { PropsWithChildren } from 'react';
-import { UniqueIdentifier, useDroppable } from '@dnd-kit/core';
+import React, { type PropsWithChildren } from 'react';
+import { type UniqueIdentifier, useDroppable } from '@dnd-kit/core';
 import clsx from 'clsx';
 import { TbDragDrop2 } from 'react-icons/tb';
 

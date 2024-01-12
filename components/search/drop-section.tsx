@@ -22,11 +22,11 @@ export function DropSection() {
       // })}
       data-testid='dustbin'
     >
-      {/*{isActive ? "Release to drop" : "Drag an icon here"}*/}
+      {/* {isActive ? "Release to drop" : "Drag an icon here"} */}
       <div className={'flex gap-2 flex-wrap'}>
-        {/*{icons.map((icon) => (*/}
-        {/*	// <IconCard key={icon.slug} icon={icon} />*/}
-        {/*))}*/}
+        {/* {icons.map((icon) => ( */}
+        {/*	// <IconCard key={icon.slug} icon={icon} /> */}
+        {/* ))} */}
       </div>
     </div>
   );

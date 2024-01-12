@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import * as simpleIcons from 'simple-icons';
+
 type IconState = {
   sections: Record<string, number>;
   addIconToSection: (slug: string) => void;
@@ -10,9 +11,9 @@ const useIconStore = create<IconState>()((set, get) => ({
   sections: {},
   addIconToSection(slug) {
     set((state) => {
-      const prev = state.sections[slug] ?? 0;
+      const previous = state.sections[slug] ?? 0;
 
-      return { sections: { ...state.sections, [slug]: prev + 1 } };
+      return { sections: { ...state.sections, [slug]: previous + 1 } };
     });
   },
   getIcons() {

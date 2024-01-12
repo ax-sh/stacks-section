@@ -1,4 +1,4 @@
-import pino, { Level, LevelMapping, LoggerOptions } from 'pino';
+import pino, { Level, LevelMapping, type LoggerOptions } from 'pino';
 import { color, red, green, gray, cyan, cyanBright } from 'console-log-colors';
 
 const config = {
@@ -30,12 +30,12 @@ const pinoConfig: LoggerOptions = {
           type: string;
         };
 
-        const levelStr = pino.levels.labels[level].toUpperCase();
+        const levelString = pino.levels.labels[level].toUpperCase();
 
         console.log(
           color.yellow(`[${time}]`) +
             ' ' +
-            color.green(levelStr) +
+            color.green(levelString) +
             ` (${color.cyanBright(type)}) ` +
             msg
         );
@@ -75,5 +75,5 @@ const pinoConfig: LoggerOptions = {
 
 const logger = pino(pinoConfig);
 
-export const log = (msg: unknown) => logger.info(msg);
+export const log = (message: unknown) => { logger.info(message); };
 export default logger;
