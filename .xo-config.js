@@ -9,7 +9,7 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: ["**/*config.{ts,js}", "vitest-setup.ts", "**/*.test.{tsx?,jsx?}"],
+			files: ["**/*config.{ts,js}", "vitest-setup.ts", "**/*.test.{tsx,jsx}"],
 			rules: {
 				"unicorn/prefer-module": "off",
 				"new-cap": "off",
