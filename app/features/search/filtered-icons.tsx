@@ -6,36 +6,12 @@ export function FilteredIcons({ term }: { term: string }) {
 	return (
 		<div className={"overflow-auto h-[25rem]"}>
 			<div className={"py-5 flex flex-wrap gap-2"}>
-				{filteredIcons.map((icon) => <div>{icon.slug}</div>)}
+				{filteredIcons.map((icon) => (
+					<div>{icon.slug}</div>
+				))}
 			</div>
 		</div>
 	);
 }
 
-{
-	/*	<div className={"overflow-auto h-[25rem]"}> */
-}
-
-{
-	/*		<div className={"py-5 flex flex-wrap gap-2"}> */
-}
-
-{
-	/*			{filteredIcons.map((icon) => ( */
-}
-
-{
-	/*				<IconCard key={icon.slug} icon={icon} /> */
-}
-
-{
-	/*			))} */
-}
-
-{
-	/*		</div> */
-}
-
-{
-	/*	</div> */
-}
+// /*				<IconCard key={icon.slug} icon={icon} /> */

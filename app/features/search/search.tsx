@@ -9,7 +9,7 @@ import { Droppable } from "@/app/features/droppable";
 import { FilteredIcons } from "@/app/features/search/filtered-icons";
 
 function Example() {
-	const [parent, setParent] = useState<UniqueIdentifier | null>(null!);
+	const [parent, setParent] = useState<UniqueIdentifier | undefined>(undefined);
 	const draggable = <Draggable id="draggable">Go ahead, drag me.</Draggable>;
 
 	return (
@@ -20,7 +20,7 @@ function Example() {
 	);
 
 	function handleDragEnd({ over }: DragEndEvent) {
-		setParent(over ? over.id : null);
+		setParent(over ? over.id : undefined);
 	}
 }
 
