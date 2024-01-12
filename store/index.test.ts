@@ -23,4 +23,8 @@ describe(useIconStore.name, () => {
     useIconStore.getState().addIconToSection('test');
     expect(useIconStore.getState().sections).toEqual({ test: 5 });
   });
+
+  it('should find the number of count in selections', () => {
+    expect(useIconStore.getState().getSlugCount('test')).toEqual(-1);
+  });
 });
