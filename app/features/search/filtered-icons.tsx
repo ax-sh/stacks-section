@@ -69,7 +69,6 @@ export function FilteredIcons({ term }: { term: string }) {
               <StackIconCard icon={icon} />
             </DraggableIcon>
           );
-          // return <IconCard key={icon.slug} icon={icon} />;
         })}
       </div>
     </div>
