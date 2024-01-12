@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import React, { useState } from "react";
-import { SearchInput } from "@/components/search/search-Input";
+import { SearchInput } from "@/components/search/search-input";
 import { IconCard } from "@/components/search/icon-card";
 import { useFilteredMemoIconsList } from "@/components/search/hooks/use-filtered-memo-icons-list";
 import { DropSection } from "@/components/search/drop-section";
