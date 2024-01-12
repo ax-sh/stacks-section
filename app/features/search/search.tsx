@@ -18,16 +18,10 @@ function DndWrapper({ children, setDraggedIcon }: PropsWithChildren<{ setDragged
   const addIconToSection = useIconStore((state) => state.addIconToSection);
   function handleDragEnd({ over, active, ...rest }: DragEndEvent) {
     setDraggedIcon(null);
-    console.log('end over', over);
-    console.log('end active', active);
-    console.log('end rest', rest);
-    addIconToSection('$44');
+    addIconToSection(active.data.current?.slug);
   }
   function handleDragStart({ over, active, ...rest }: DragEndEvent) {
     setDraggedIcon(active.data.current);
-    console.log('start over', over);
-    console.log('start active', active);
-    console.log('start rest', rest);
   }
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
