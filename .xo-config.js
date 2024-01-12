@@ -6,6 +6,8 @@ module.exports = {
 		"capitalized-comments": "off",
 		"unicorn/no-array-callback-reference": "off",
 		"@typescript-eslint/triple-slash-reference": "off",
+		"no-lone-blocks": "off",
+		"@typescript-eslint/no-unsafe-assignment": "off",
 	},
 	overrides: [
 		{

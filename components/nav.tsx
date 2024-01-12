@@ -7,13 +7,13 @@ import {
 	// NavbarMenu,
 	// NavbarMenuItem,
 } from "@nextui-org/navbar";
-import { Link } from "@nextui-org/link";
+import { LiaDragonSolid } from "react-icons/lia";
 
 export default function Nav() {
 	return (
 		<Navbar shouldHideOnScroll>
 			<NavbarBrand>
-				{/* <AcmeLogo /> */}
+				<LiaDragonSolid size={48} />
 				<p className="font-bold text-inherit">Stacks</p>
 			</NavbarBrand>
 			<NavbarContent className="hidden sm:flex gap-4" justify="center">
