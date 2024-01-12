@@ -9,7 +9,7 @@ const useIconStore = create<IconState>()((set) => ({
   sections: {},
   addIconToSection(slug) {
     set((state) => {
-      const prev = state.sections[slug] ?? 1;
+      const prev = state.sections[slug] ?? 0;
 
       return { sections: { ...state.sections, [slug]: prev + 1 } };
     });
