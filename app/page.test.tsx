@@ -1,0 +1,12 @@
+// import { expect, test } from 'vitest'
+import { render, screen } from "@testing-library/react";
+import Page from "./page";
+
+describe("", () => {
+	it("Page", () => {
+		render(<Page />);
+		screen.logTestingPlaygroundURL();
+		expect(screen.getByRole("main")).toBeInTheDocument();
+		// expect(screen.getByRole('heading', { level: 1, name: 'Home' })).toBeDefined()
+	});
+});
