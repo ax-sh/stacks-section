@@ -17,14 +17,18 @@ function DraggableIcon({
     id,
     data
   });
-  const style = {
-    // Outputs `translate3d(x, y, 0)`
-    transform: CSS.Translate.toString(transform),
-    visibility: isDragging ? 'hidden' : 'visible'
-  };
 
   return (
-    <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
+    <div
+      ref={setNodeRef}
+      style={{
+        // Outputs `translate3d(x, y, 0)`
+        transform: CSS.Translate.toString(transform),
+        visibility: isDragging ? 'hidden' : 'visible'
+      }}
+      {...listeners}
+      {...attributes}
+    >
       {children}
     </div>
   );
