@@ -11,4 +11,9 @@ describe(useIconStore.name, () => {
   it('should have empty icons', () => {
     expect(useIconStore.getState().getIcons()).toEqual([]);
   });
+
+  it('should have one selection after invoking function', async () => {
+    useIconStore.getState().addIconToSection('test');
+    expect(useIconStore.getState().sections).toEqual({ test: 1 });
+  });
 });
