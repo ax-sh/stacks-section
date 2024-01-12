@@ -14,6 +14,13 @@ describe(useIconStore.name, () => {
 
   it('should have one selection after invoking function', async () => {
     useIconStore.getState().addIconToSection('test');
+
     expect(useIconStore.getState().sections).toEqual({ test: 1 });
+
+    useIconStore.getState().addIconToSection('test');
+    useIconStore.getState().addIconToSection('test');
+    useIconStore.getState().addIconToSection('test');
+    useIconStore.getState().addIconToSection('test');
+    expect(useIconStore.getState().sections).toEqual({ test: 5 });
   });
 });
