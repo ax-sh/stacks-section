@@ -14,4 +14,4 @@ export function FilteredIcons({ term }: { term: string }) {
 	);
 }
 
-// /*				<IconCard key={icon.slug} icon={icon} /> */
+/*				<IconCard key={icon.slug} icon={icon} /> */
