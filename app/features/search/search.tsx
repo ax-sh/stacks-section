@@ -9,7 +9,7 @@ import { TbDragDrop2 } from "react-icons/tb";
 import { Example } from "@/app/features/search/example";
 import logger from "@/app/features/logger";
 
-const child = logger.child({ ui: "search" });
+const child = logger.child({ type: "search" });
 child.info("hello child!");
 export function Search() {
 	const [term, setTerm] = useState("");
