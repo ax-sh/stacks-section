@@ -9,10 +9,17 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: ["**/*config.ts", "**/*config.js"],
+			files: ["**/*config.{ts,js}", "vitest-setup.ts"],
 			rules: {
 				"unicorn/prefer-module": "off",
 				"new-cap": "off",
+				"import/no-unassigned-import": "off",
+			},
+		},
+		{
+			files: ["auto-imports.d.ts"],
+			rules: {
+				"unicorn/no-abusive-eslint-disable": "off",
 			},
 		},
 	],
