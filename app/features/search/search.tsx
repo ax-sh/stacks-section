@@ -9,6 +9,7 @@ import { FilteredIcons, StackIconCard } from '@/app/features/search/filtered-ico
 import logger from '@/app/features/logger';
 import useIconStore from '@/store';
 import { IconDroppable, IconDroppablePlaceholder } from '@/app/features/droppable';
+import type { SimpleIcon } from 'simple-icons';
 
 const child = logger.child({ type: 'search' });
 child.info('search parent');
@@ -16,15 +17,15 @@ child.info('search parent');
 function DndWrapper({
   children,
   setDraggedIcon
-}: PropsWithChildren<{ setDraggedIcon: Dispatch<SetStateAction<unknown>> }>) {
+}: PropsWithChildren<{ setDraggedIcon: Dispatch<SetStateAction<SimpleIcon | undefined>> }>) {
   const addIconToSection = useIconStore((state) => state.addIconToSection);
   function handleDragEnd({ over, active, ...rest }: DragEndEvent) {
-    setDraggedIcon(null);
+    setDraggedIcon(undefined);
     addIconToSection(active.data.current?.slug);
   }
 
   function handleDragStart({ over, active, ...rest }: DragEndEvent) {
-    setDraggedIcon(active.data.current);
+    setDraggedIcon(active.data.current as SimpleIcon);
   }
 
   return (
@@ -36,7 +37,7 @@ function DndWrapper({
 
 export function Search() {
   const [term, setTerm] = useState('');
-  const [draggedIcon, setDraggedIcon] = useState<unknown | undefined>(null);
+  const [draggedIcon, setDraggedIcon] = useState<SimpleIcon | undefined>();
   const getIcons = useIconStore((state) => state.getIcons);
 
   const icons = getIcons();
@@ -48,7 +49,7 @@ export function Search() {
         <FilteredIcons term={term} />
         <DragOverlay>
           {/* note needed for fixing overflow hidden issue */}
-          {Boolean(draggedIcon) && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
+          {!!draggedIcon && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
         </DragOverlay>
         <IconDroppable id={'drop'} className={'bg-gray-950 p-4 h-40 relative'}>
           {icons.length === 0 ? (
