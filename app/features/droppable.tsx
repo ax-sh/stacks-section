@@ -1,7 +1,11 @@
-import React, { type PropsWithChildren } from 'react';
-import { type UniqueIdentifier, useDroppable } from '@dnd-kit/core';
+import React, { PropsWithChildren } from 'react';
+import { UniqueIdentifier, useDroppable } from '@dnd-kit/core';
+import clsx from 'clsx';
+import { TbDragDrop2 } from 'react-icons/tb';
 
-export function Droppable(props: PropsWithChildren<{ id: UniqueIdentifier }>) {
+export function IconDroppable(
+  props: PropsWithChildren<{ id: UniqueIdentifier; className: string }>
+) {
   const { isOver, setNodeRef } = useDroppable({
     id: props.id
   });
@@ -10,8 +14,20 @@ export function Droppable(props: PropsWithChildren<{ id: UniqueIdentifier }>) {
   };
 
   return (
-    <div ref={setNodeRef} style={style} className={isOver ? 'bg-red-400' : ''}>
+    <section
+      ref={setNodeRef}
+      style={style}
+      className={clsx(props.className, isOver && 'bg-red-400')}
+    >
       {props.children}
+    </section>
+  );
+}
+
+export function IconDroppablePlaceholder() {
+  return (
+    <div className={'absolute inset-0 grid place-content-center'}>
+      <TbDragDrop2 size={64} />
     </div>
   );
 }
