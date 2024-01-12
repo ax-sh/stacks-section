@@ -26,11 +26,15 @@ function Example() {
 
 export function Search() {
 	const [term, setTerm] = useState("");
-
+	function handleDragEnd() {
+		console.log(2323);
+	}
 	return (
 		<div className={"flex flex-col gap-4"}>
 			<SearchInput term={term} setTerm={setTerm} />
-			<FilteredIcons term={term} />
+			<DndContext onDragEnd={handleDragEnd}>
+				<FilteredIcons term={term} />
+			</DndContext>
 
 			<Example />
 		</div>
