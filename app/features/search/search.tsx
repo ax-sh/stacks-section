@@ -35,12 +35,6 @@ export function Search() {
   const [draggedIcon, setDraggedIcon] = useState<any | null>(null);
   const getIcons = useIconStore((state) => state.getIcons);
 
-  // const icons = useMemo(() => {
-  //   if (!sections) return [];
-  //   return Object.keys(sections).map((slug) =>
-  //     Object.values(simpleIcons).find((i) => i.slug === slug)
-  //   );
-  // }, [sections]);
   const icons = getIcons();
   console.log(icons, 77);
 
