@@ -28,7 +28,21 @@ describe(useIconStore.name, () => {
     expect(useIconStore.getState().sections).toEqual({ test: 5 });
   });
 
-  it('should find the number of count in selections', () => {
+  it('should find the number of count in selections when empty', () => {
     expect(useIconStore.getState().getSlugCount('test')).toEqual(-1);
+  });
+
+  it('should find the number of count in selections', () => {
+    useIconStore.getState().addIconToSection('slug');
+    useIconStore.getState().addIconToSection('slug');
+    useIconStore.getState().addIconToSection('slug');
+    useIconStore.getState().addIconToSection('slug');
+    useIconStore.getState().addIconToSection('slug');
+    useIconStore.getState().addIconToSection('slug');
+    useIconStore.getState().addIconToSection('slug');
+    useIconStore.getState().addIconToSection('slug');
+    useIconStore.getState().addIconToSection('slug');
+    useIconStore.getState().addIconToSection('slug');
+    expect(useIconStore.getState().getSlugCount('slug')).toEqual(10);
   });
 });
