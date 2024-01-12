@@ -6,7 +6,7 @@ import type { DragEndEvent } from "@dnd-kit/core/dist/types";
 import { SearchInput } from "@/app/features/search/search-input";
 import { Draggable } from "@/app/features/draggable";
 import { Droppable } from "@/app/features/droppable";
-import { FilteredIcons } from "@/app/features/search/filtered-icons";
+import { FilteredIcons, StackIconCard } from "@/app/features/search/filtered-icons";
 import { StackIcon } from "@/assets/icons";
 
 function Example() {
@@ -32,7 +32,6 @@ export function Search() {
 		setDraggedIcon(null);
 	}
 	function handleDragStart({ over, active, ...rest }: DragEndEvent) {
-		// setActiveId(active.id);
 		setDraggedIcon(active.data.current);
 		console.log("start", rest, active, "<<<<<<");
 	}
@@ -41,9 +40,8 @@ export function Search() {
 			<SearchInput term={term} setTerm={setTerm} />
 			<DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
 				<FilteredIcons term={term} />
-
 				<DragOverlay>
-					{!!draggedIcon && <StackIcon key={draggedIcon.slug} icon={draggedIcon} />}
+					{!!draggedIcon && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
 				</DragOverlay>
 			</DndContext>
 

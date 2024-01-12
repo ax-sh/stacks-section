@@ -5,6 +5,7 @@ import { Badge } from "@nextui-org/react";
 import { StackIcon } from "@/assets/icons";
 import { type UniqueIdentifier, useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
+import type { SimpleIcon } from "simple-icons";
 
 function DraggableIcon({
 	children,
@@ -37,6 +38,20 @@ function IconWithBadge({ content, children }: PropsWithChildren<{ content?: numb
 	);
 }
 
+export function StackIconCard({ icon }: { icon: SimpleIcon }) {
+	return (
+		<div
+			className={"flex flex-col items-center justify-center bg-white/10 p-4 rounded"}
+			style={{ fill: `#${icon.hex}` }}
+		>
+			<IconWithBadge>
+				<StackIcon key={icon.slug} icon={icon} />
+			</IconWithBadge>
+			<label className={"text-xs"}>{icon.title}</label>
+		</div>
+	);
+}
+
 export function FilteredIcons({ term }: { term: string }) {
 	const filteredIcons = useFilteredMemoIconsList(term);
 	return (
@@ -45,15 +60,7 @@ export function FilteredIcons({ term }: { term: string }) {
 				{filteredIcons.map((icon) => {
 					return (
 						<DraggableIcon key={icon.slug} id={icon.slug} data={icon}>
-							<div
-								className={"flex flex-col items-center justify-center bg-white/10 p-4 rounded"}
-								style={{ fill: `#${icon.hex}` }}
-							>
-								<IconWithBadge>
-									<StackIcon key={icon.slug} icon={icon} />
-								</IconWithBadge>
-								<label className={"text-xs"}>{icon.title}</label>
-							</div>
+							<StackIconCard icon={icon} />
 						</DraggableIcon>
 					);
 					// return <IconCard key={icon.slug} icon={icon} />;
