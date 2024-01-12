@@ -1,5 +1,5 @@
 import React from "react";
-import { SimpleIcon } from "simple-icons";
+import { type SimpleIcon } from "simple-icons";
 import SVG from "react-inlinesvg";
 import clsx from "clsx";
 

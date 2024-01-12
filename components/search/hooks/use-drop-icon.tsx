@@ -15,11 +15,14 @@ export function useDropIcon() {
 	const state: DropStates = useMemo(() => {
 		if (isActive) {
 			return "ACTIVE";
-		} else if (canDrop) {
-			return "CAN_DROP";
-		} else {
-			return "DEFAULT";
 		}
+
+ if (canDrop) {
+			return "CAN_DROP";
+		}
+ 
+			return "DEFAULT";
+		
 	}, [isActive, canDrop]);
 	return { canDrop, isActive, drop, state };
 }

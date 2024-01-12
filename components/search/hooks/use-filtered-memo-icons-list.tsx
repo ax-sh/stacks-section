@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import * as icons from "simple-icons";
-import { SimpleIcon } from "simple-icons";
+import { type SimpleIcon } from "simple-icons";
 
 export function useFilteredMemoIconsList(term: string) {
 	return useMemo(() => {

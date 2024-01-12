@@ -1,9 +1,9 @@
-import { SimpleIcon } from "simple-icons";
-import { StackIcon } from "@/assets/icons";
+import { type SimpleIcon } from "simple-icons";
 import React from "react";
+import { Badge } from "@nextui-org/react";
+import { StackIcon } from "@/assets/icons";
 import { useDragIcon } from "@/components/search/hooks/use-drag-icon";
 import useIconStore from "@/store";
-import { Badge } from "@nextui-org/react";
 
 export type DropResult = any;
 

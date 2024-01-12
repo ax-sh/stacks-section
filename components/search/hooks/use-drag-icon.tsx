@@ -1,6 +1,6 @@
-import { SimpleIcon } from "simple-icons";
+import { type SimpleIcon } from "simple-icons";
 import { useDrag } from "react-dnd";
-import { DropResult } from "@/components/search/icon-card";
+import { type DropResult } from "@/components/search/icon-card";
 
 export function useDragIcon(icon: SimpleIcon, callback: CallableFunction) {
 	const [{ isDragging, opacity }, drag] = useDrag(() => ({
