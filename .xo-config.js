@@ -9,11 +9,12 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: ["**/*config.{ts,js}", "vitest-setup.ts"],
+			files: ["**/*config.{ts,js}", "vitest-setup.ts", "**/*.test.{tsx?,jsx?}"],
 			rules: {
 				"unicorn/prefer-module": "off",
 				"new-cap": "off",
 				"import/no-unassigned-import": "off",
+				"import/no-named-as-default": "off",
 			},
 		},
 		{
