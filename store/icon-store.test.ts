@@ -1,4 +1,4 @@
-import useIconStore from "@/store/index";
+import useIconStore from "@/store/icon-store";
 
 const initialStoreState = useIconStore.getState();
 describe(useIconStore.name, () => {

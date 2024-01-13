@@ -1,10 +1,10 @@
 "use client";
 
 import { IconDroppable, IconDroppablePlaceholder } from "@/app/features/droppable";
-import logger from "@/app/features/logger";
+
 import { FilteredIcons, StackIconCard } from "@/app/features/search/filtered-icons";
 import { SearchInput } from "@/app/features/search/search-input";
-import useIconStore from "@/store";
+import useIconStore from "@/store/icon-store";
 import { DndContext, DragOverlay } from "@dnd-kit/core";
 import type { DragEndEvent } from "@dnd-kit/core/dist/types";
 import React, { type Dispatch, type PropsWithChildren, type SetStateAction, useState } from "react";

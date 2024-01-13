@@ -2,7 +2,7 @@ import { DraggableIcon } from "@/app/features/draggable";
 import { useFilteredMemoIconsList } from "@/app/features/search/hooks/use-filtered-memo-icons-list";
 import { IconWithBadge } from "@/app/ui/icon-with-badge";
 import { StackIcon } from "@/components/icons";
-import useIconStore from "@/store";
+import useIconStore from "@/store/icon-store";
 import React from "react";
 import type { SimpleIcon } from "simple-icons";
 
