@@ -8,9 +8,9 @@ export function useFilteredMemoIconsList(term: string) {
   return useMemo(() => {
     if (!term) return [];
     const predicate = (i: SimpleIcon) => i.title.toLowerCase().includes(term);
-    child.debug("filter start")
+    child.debug("filter start");
     const results = useIconStore.getState().allIcons.filter(predicate);
-    child.debug("filter end")
+    child.debug("filter end");
     return results;
   }, [term]);
 }
