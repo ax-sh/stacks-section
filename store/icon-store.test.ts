@@ -33,21 +33,22 @@ describe(useIconStore.name, () => {
   });
 
   it("should find the number of count in selections", () => {
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
+    const state = useIconStore.getState();
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
     expect(useIconStore.getState().getSlugCount("slug")).toEqual(10);
   });
 
   it("should filter icons selections", () => {
-   const state =  useIconStore.getState()
+    const state = useIconStore.getState();
     console.log(state.allIcons.length);
     // expect(useIconStore.getState().getSlugCount("slug")).toEqual(10);
   });
