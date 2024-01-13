@@ -43,7 +43,10 @@ const useIconStore = create<IconState>()((set, get) => ({
     return sections[slug] ?? -1;
   },
   filterIconsBySlug(slug) {
-    const predicate = (icon: SimpleIcon) => icon.title.toLowerCase().includes(slug.toLowerCase());
+    if (!slug) return [];
+
+    const predicate = (icon: SimpleIcon) =>
+      icon.title.toLowerCase().includes(slug.trim().toLowerCase());
     const results = get().allIcons.filter(predicate);
     return results;
   },
