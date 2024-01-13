@@ -47,9 +47,9 @@ describe(useIconStore.name, () => {
     expect(useIconStore.getState().getSlugCount("slug")).toEqual(10);
   });
 
-  it("should filter icons selections", () => {
+  it("count all icons on simple icon", () => {
     const state = useIconStore.getState();
-    console.log(state.allIcons.length);
+    expect(state.allIcons.length).toEqual(2930)
     // expect(useIconStore.getState().getSlugCount("slug")).toEqual(10);
   });
 });
