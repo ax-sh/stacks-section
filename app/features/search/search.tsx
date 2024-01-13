@@ -10,8 +10,7 @@ import type { DragEndEvent } from "@dnd-kit/core/dist/types";
 import React, { type Dispatch, type PropsWithChildren, type SetStateAction, useState } from "react";
 import type { SimpleIcon } from "simple-icons";
 
-const child = logger.child({ type: "search" });
-child.info("search parent");
+
 
 function DndWrapper({
   children,

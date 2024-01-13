@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import React from "react";
+import React, { type ComponentProps } from "react";
 import SVG from "react-inlinesvg";
 import { type SimpleIcon } from "simple-icons";
 
-export const SearchIcon = (props: any) => (
+export const SearchIcon = (props: ComponentProps<"svg">) => (
   <svg
     aria-hidden="true"
     fill="none"
