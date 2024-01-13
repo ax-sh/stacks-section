@@ -27,7 +27,7 @@ export function FilteredIcons({ term }: { readonly term: string }) {
   return (
     <div
       className={
-        'overflow-auto h-80 scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100 scrollbar-thin'
+        'overflow-auto h-80 scrollbar-rounded-md scrollbar-thumb-gray-900 scrollbar-track-gray-800 scrollbar-thin'
       }
     >
       <div className={'flex flex-wrap gap-4'}>
