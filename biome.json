@@ -1,5 +1,9 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.5.1/schema.json",
+	"files": {
+		"ignoreUnknown": true,
+		"ignore": [".next", "./**/*config.js", "./**/*.d.ts" ]
+	},
 	"organizeImports": {
 		"enabled": true
 	},
