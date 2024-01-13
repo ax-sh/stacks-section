@@ -41,7 +41,7 @@ export function Search() {
   const icons = getIcons();
 
   return (
-    <div className={'flex flex-col gap-4'}>
+    <div className={"flex flex-col gap-4"}>
       <SearchInput term={term} setTerm={setTerm} />
 
       <DndWrapper setDraggedIcon={setDraggedIcon}>
@@ -50,10 +50,10 @@ export function Search() {
           {/* note needed for fixing overflow hidden issue */}
           {!!draggedIcon && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
         </DragOverlay>
-        <div className={'grid grid-cols-12 grid-rows-1 h-80 gap-4'}>
-          <IconDroppable id={'drop'} className={'bg-gray-950 p-4 relative rounded col-span-9'}>
+        <div className={"grid grid-cols-12 grid-rows-1 h-80 gap-4"}>
+          <IconDroppable id={"drop"} className={"bg-gray-950 p-4 relative rounded col-span-9"}>
             {icons.length > 0 ? (
-              <div className={'flex flex-wrap gap-2'}>
+              <div className={"flex flex-wrap gap-2"}>
                 {icons.map((icon) => (
                   <StackIconCard key={icon.slug} icon={icon} />
                 ))}
@@ -63,9 +63,9 @@ export function Search() {
             )}
           </IconDroppable>
 
-          <IconDroppable id={'drop'} className={'bg-gray-950 p-4  relative rounded col-span-3'}>
+          <IconDroppable id={"drop"} className={"bg-gray-950 p-4  relative rounded col-span-3"}>
             {icons.length > 0 ? (
-              <div className={'flex flex-wrap gap-2'}>
+              <div className={"flex flex-wrap gap-2"}>
                 {icons.map((icon) => (
                   <StackIconCard key={icon.slug} icon={icon} />
                 ))}
@@ -74,7 +74,6 @@ export function Search() {
               <IconDroppablePlaceholder />
             )}
           </IconDroppable>
-
         </div>
       </DndWrapper>
     </div>
