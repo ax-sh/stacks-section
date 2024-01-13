@@ -80,7 +80,7 @@ const pinoConfig: LoggerOptions = {
 // 	};
 // }
 
-const logger = pino(pinoConfig, stream);
+const logger = pino(pinoConfig);
 
 export const log = (message: unknown) => {
   logger.info(message);
