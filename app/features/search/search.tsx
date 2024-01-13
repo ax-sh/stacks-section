@@ -67,8 +67,6 @@ export function Search() {
           {!!draggedIcon && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
         </DragOverlay>
         <div className={"grid grid-cols-12 grid-rows-1 h-80 gap-4"}>
-
-
           <IconDroppableWrapper icons={icons} />
         </div>
       </DndWrapper>
