@@ -55,7 +55,6 @@ describe(useIconStore.name, () => {
   it("should filter icon that matches slug", () => {
     const state = useIconStore.getState();
     expect(state.filterIconsBySlug("slug")).toEqual([]);
-
-    // expect(useIconStore.getState().getSlugCount("slug")).toEqual(10);
+    expect(state.filterIconsBySlug("fb")).toHaveLength(1);
   });
 });
