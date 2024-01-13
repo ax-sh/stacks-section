@@ -3,8 +3,8 @@ import pino, { type LoggerOptions } from "pino";
 import pretty from "pino-pretty";
 
 const stream = pretty({
-  colorize: true
-})
+  colorize: true,
+});
 
 const config = {
   serverUrl: process.env.REACT_APP_API_PATH ?? "http://localhost:3000",
