@@ -53,7 +53,7 @@ export function Search() {
           {icons.length === 0 ? (
             <IconDroppablePlaceholder />
           ) : (
-            <div className={"flex flex-wrap gap-2 "}>
+            <div className={"flex flex-wrap gap-2"}>
               {icons.map((icon) => (
                 <StackIconCard key={icon.slug} icon={icon} />
               ))}
