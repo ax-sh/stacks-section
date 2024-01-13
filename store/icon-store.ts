@@ -3,13 +3,14 @@ import * as simpleIcons from "simple-icons";
 import type { SimpleIcon } from "simple-icons";
 import { create } from "zustand";
 
-type IconState = {
+type IconState = Required<{
   sections: Record<string, number>;
   addIconToSection: (slug: string) => void;
   getIcons: () => SimpleIcon[];
   getSlugCount: (slug: string) => number;
   allIcons: SimpleIcon[];
-};
+  filterIconsBySlug(slug: string): SimpleIcon[];
+}>;
 
 const child = logger.child({ type: "IconStore" });
 
@@ -41,5 +42,8 @@ const useIconStore = create<IconState>()((set, get) => ({
     const { sections } = get();
     return sections[slug] ?? -1;
   },
+  filterIconsBySlug(slug){
+    return [] as SimpleIcon[]
+  }
 }));
 export default useIconStore;

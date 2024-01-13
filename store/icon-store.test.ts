@@ -49,7 +49,13 @@ describe(useIconStore.name, () => {
 
   it("count all icons on simple icon", () => {
     const state = useIconStore.getState();
-    expect(state.allIcons.length).toEqual(2930)
+    expect(state.allIcons.length).toEqual(2930);
+  });
+
+  it("should filter icon that matches slug", () => {
+    const state = useIconStore.getState();
+    expect(state.filterIconsBySlug('slug')).toEqual([]);
+
     // expect(useIconStore.getState().getSlugCount("slug")).toEqual(10);
   });
 });
