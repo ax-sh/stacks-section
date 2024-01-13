@@ -33,11 +33,9 @@ const pinoConfig: LoggerOptions = {
 				const levelString = pino.levels.labels[level].toUpperCase();
 
 				console.log(
-					color.yellow(`[${time}]`) +
-						" " +
-						color.green(levelString) +
-						` (${color.cyanBright(type)}) ` +
-						msg,
+					`${color.yellow(`[${time}]`)} ${color.green(
+						levelString,
+					)} (${color.cyanBright(type)}) ${msg}`,
 				);
 
 				// console.log(
