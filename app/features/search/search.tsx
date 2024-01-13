@@ -33,18 +33,20 @@ function DndWrapper({
   );
 }
 
-function IconDroppableWrapper({icons}:{icons:SimpleIcon[]}){
-  return <IconDroppable id={"drop-2"} className={"bg-gray-950 p-4  relative rounded col-span-3"}>
-    {icons.length > 0 ? (
-      <div className={"flex flex-wrap gap-2"}>
-        {icons.map((icon) => (
-          <StackIconCard key={icon.slug} icon={icon} />
-        ))}
-      </div>
-    ) : (
-      <IconDroppablePlaceholder />
-    )}
-  </IconDroppable>
+function IconDroppableWrapper({ icons }: { icons: SimpleIcon[] }) {
+  return (
+    <IconDroppable id={"drop-2"} className={"bg-gray-950 p-4  relative rounded col-span-3"}>
+      {icons.length > 0 ? (
+        <div className={"flex flex-wrap gap-2"}>
+          {icons.map((icon) => (
+            <StackIconCard key={icon.slug} icon={icon} />
+          ))}
+        </div>
+      ) : (
+        <IconDroppablePlaceholder />
+      )}
+    </IconDroppable>
+  );
 }
 
 export function Search() {
@@ -65,19 +67,9 @@ export function Search() {
           {!!draggedIcon && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
         </DragOverlay>
         <div className={"grid grid-cols-12 grid-rows-1 h-80 gap-4"}>
-          <IconDroppable id={"drop"} className={"bg-gray-950 p-4 relative rounded col-span-9"}>
-            {icons.length > 0 ? (
-              <div className={"flex flex-wrap gap-2"}>
-                {icons.map((icon) => (
-                  <StackIconCard key={icon.slug} icon={icon} />
-                ))}
-              </div>
-            ) : (
-              <IconDroppablePlaceholder />
-            )}
-          </IconDroppable>
 
-          <IconDroppableWrapper icons={icons}/>
+
+          <IconDroppableWrapper icons={icons} />
         </div>
       </DndWrapper>
     </div>
