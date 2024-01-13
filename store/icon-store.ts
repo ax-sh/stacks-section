@@ -1,7 +1,8 @@
-import logger from "@/app/features/logger";
+
 import * as simpleIcons from "simple-icons";
 import type { SimpleIcon } from "simple-icons";
 import { create } from "zustand";
+import logger from "@/app/logger";
 
 type IconState = Required<{
   sections: Record<string, number>;
