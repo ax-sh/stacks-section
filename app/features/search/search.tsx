@@ -6,7 +6,7 @@ import { FilteredIcons, StackIconCard } from "@/app/features/search/filtered-ico
 import { SearchInput } from "@/app/features/search/search-input";
 import useIconStore from "@/store/icon-store";
 import { DragOverlay } from "@dnd-kit/core";
-import pc from "picocolors";
+
 import React, { useState } from "react";
 import type { SimpleIcon } from "simple-icons";
 
