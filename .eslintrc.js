@@ -13,6 +13,10 @@ module.exports = {
   },
   overrides: [
     {
+      files: ["*.ts", "*.js", "*.tsx", "*.jsx"],
+      extends: ["biome"],
+    },
+    {
       files: ["**/*config.{ts,js}", "vitest-setup.ts", "**/*.test.{tsx,jsx}"],
       rules: {
         "unicorn/prefer-module": "off",

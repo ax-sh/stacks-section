@@ -109,6 +109,9 @@ devDependencies:
   console-log-colors:
     specifier: ^0.4.0
     version: 0.4.0
+  eslint-config-biome:
+    specifier: ^1.4.1
+    version: 1.4.1
   eslint-config-prettier:
     specifier: ^9.1.0
     version: 9.1.0(eslint@8.56.0)
@@ -5065,6 +5068,10 @@ packages:
       eslint: '>=6.0.0'
     dependencies:
       eslint: 8.56.0
+    dev: true
+
+  /eslint-config-biome@1.4.1:
+    resolution: {integrity: sha512-aBJTphYc59lqQXD1eHuw5GUGAs4Uz5GuueRfynWyaUoaG7RzQ4MFfPWqMPRDJ8b/I5YUdeJoma0wxtcYAQpTHQ==}
     dev: true
 
   /eslint-config-next@14.0.4(eslint@8.56.0)(typescript@5.3.3):
