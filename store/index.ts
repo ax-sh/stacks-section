@@ -1,6 +1,6 @@
-import * as simpleIcons from 'simple-icons';
-import type { SimpleIcon } from 'simple-icons';
-import { create } from 'zustand';
+import * as simpleIcons from "simple-icons";
+import type { SimpleIcon } from "simple-icons";
+import { create } from "zustand";
 
 type IconState = {
   sections: Record<string, number>;
@@ -11,9 +11,9 @@ type IconState = {
 };
 
 function getAllIcons() {
-  console.log('loading icons');
+  console.log("loading icons");
   const icons = Object.values(simpleIcons);
-  console.log('icons loaded');
+  console.log("icons loaded");
   return icons;
 }
 
@@ -37,6 +37,6 @@ const useIconStore = create<IconState>()((set, get) => ({
   getSlugCount(slug) {
     const { sections } = get();
     return sections[slug] ?? -1;
-  }
+  },
 }));
 export default useIconStore;
