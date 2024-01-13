@@ -12,6 +12,7 @@ import type { SimpleIcon } from "simple-icons";
 
 function IconDroppableWrapper({ icons }: Readonly<{ icons: SimpleIcon[] }>) {
   return (
+    <div className={"grid grid-cols-12 grid-rows-1 h-80 gap-4"}>
     <IconDroppable id={"drop-2"} className={"bg-gray-950 p-4  relative rounded col-span-3"}>
       {icons.length > 0 ? (
         <div className={"flex flex-wrap gap-2"}>
@@ -23,6 +24,7 @@ function IconDroppableWrapper({ icons }: Readonly<{ icons: SimpleIcon[] }>) {
         <IconDroppablePlaceholder />
       )}
     </IconDroppable>
+    </div>
   );
 }
 
@@ -32,7 +34,6 @@ export function Search() {
   const getIcons = useIconStore((state) => state.getIcons);
 
   const icons = getIcons();
-  // console.log(pc.green(`How are ${pc.italic(`you`)} doing?`));
 
   return (
     <div className={"flex flex-col gap-4"}>
@@ -44,9 +45,9 @@ export function Search() {
           {/* note needed for fixing overflow hidden issue */}
           {!!draggedIcon && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
         </DragOverlay>
-        <div className={"grid grid-cols-12 grid-rows-1 h-80 gap-4"}>
+
           <IconDroppableWrapper icons={icons} />
-        </div>
+
       </DndWrapper>
     </div>
   );
