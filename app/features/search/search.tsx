@@ -13,17 +13,17 @@ import type { SimpleIcon } from "simple-icons";
 function IconDroppableWrapper({ icons }: Readonly<{ icons: SimpleIcon[] }>) {
   return (
     <div className={"grid grid-cols-12 grid-rows-1 h-80 gap-4"}>
-    <IconDroppable id={"drop-2"} className={"bg-gray-950 p-4  relative rounded col-span-3"}>
-      {icons.length > 0 ? (
-        <div className={"flex flex-wrap gap-2"}>
-          {icons.map((icon) => (
-            <StackIconCard key={icon.slug} icon={icon} />
-          ))}
-        </div>
-      ) : (
-        <IconDroppablePlaceholder />
-      )}
-    </IconDroppable>
+      <IconDroppable id={"drop-2"} className={"bg-gray-950 p-4  relative rounded col-span-3"}>
+        {icons.length > 0 ? (
+          <div className={"flex flex-wrap gap-2"}>
+            {icons.map((icon) => (
+              <StackIconCard key={icon.slug} icon={icon} />
+            ))}
+          </div>
+        ) : (
+          <IconDroppablePlaceholder />
+        )}
+      </IconDroppable>
     </div>
   );
 }
@@ -46,8 +46,7 @@ export function Search() {
           {!!draggedIcon && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
         </DragOverlay>
 
-          <IconDroppableWrapper icons={icons} />
-
+        <IconDroppableWrapper icons={icons} />
       </DndWrapper>
     </div>
   );
