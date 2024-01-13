@@ -8,11 +8,10 @@ export function DraggableIcon({
   id,
   data,
 }: PropsWithChildren<{ id: UniqueIdentifier; data: SimpleIcon }>) {
-  const { isDragging, attributes, listeners, setNodeRef, transform } =
-    useDraggable({
-      id,
-      data,
-    });
+  const { isDragging, attributes, listeners, setNodeRef, transform } = useDraggable({
+    id,
+    data,
+  });
 
   return (
     <div
