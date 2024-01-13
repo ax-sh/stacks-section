@@ -63,7 +63,7 @@ export function Search() {
             )}
           </IconDroppable>
 
-          <IconDroppable id={"drop"} className={"bg-gray-950 p-4  relative rounded col-span-3"}>
+          <IconDroppable id={"drop-2"} className={"bg-gray-950 p-4  relative rounded col-span-3"}>
             {icons.length > 0 ? (
               <div className={"flex flex-wrap gap-2"}>
                 {icons.map((icon) => (
