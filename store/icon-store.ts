@@ -8,7 +8,7 @@ type IconState = Required<{
   addIconToSection: (slug: string) => void;
   getIcons: () => SimpleIcon[];
   getSlugCount: (slug: string) => number;
-  allIcons: SimpleIcon[];
+  readonly allIcons: SimpleIcon[];
   filterIconsBySlug(slug: string): SimpleIcon[];
 }>;
 
@@ -34,9 +34,10 @@ const useIconStore = create<IconState>()((set, get) => ({
   getIcons() {
     const { sections } = get();
     if (!sections) return [] as SimpleIcon[];
-    console.log(sections);
-    const icons = Object.values(simpleIcons);
-    return Object.keys(sections).map((slug) => icons.find((i) => i.slug === slug)) as SimpleIcon[];
+    const icons = get().allIcons;
+    return Object.keys(sections).map((slug) =>
+      icons.find((icon) => icon.slug === slug),
+    ) as SimpleIcon[];
   },
   getSlugCount(slug) {
     const { sections } = get();

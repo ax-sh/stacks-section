@@ -1,16 +1,16 @@
 "use client";
 
 import { IconDroppable, IconDroppablePlaceholder } from "@/app/features/droppable";
-
 import { DndWrapper } from "@/app/features/search/dnd-wrapper";
 import { FilteredIcons, StackIconCard } from "@/app/features/search/filtered-icons";
 import { SearchInput } from "@/app/features/search/search-input";
 import useIconStore from "@/store/icon-store";
 import { DragOverlay } from "@dnd-kit/core";
+import pc from "picocolors";
 import React, { useState } from "react";
 import type { SimpleIcon } from "simple-icons";
 
-function IconDroppableWrapper({ icons }: { icons: SimpleIcon[] }) {
+function IconDroppableWrapper({ icons }: Readonly<{ icons: SimpleIcon[] }>) {
   return (
     <IconDroppable id={"drop-2"} className={"bg-gray-950 p-4  relative rounded col-span-3"}>
       {icons.length > 0 ? (
@@ -32,6 +32,7 @@ export function Search() {
   const getIcons = useIconStore((state) => state.getIcons);
 
   const icons = getIcons();
+  // console.log(pc.green(`How are ${pc.italic(`you`)} doing?`));
 
   return (
     <div className={"flex flex-col gap-4"}>
