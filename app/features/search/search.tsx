@@ -33,6 +33,20 @@ function DndWrapper({
   );
 }
 
+function IconDroppableWrapper({icons}:{icons:SimpleIcon[]}){
+  return <IconDroppable id={"drop-2"} className={"bg-gray-950 p-4  relative rounded col-span-3"}>
+    {icons.length > 0 ? (
+      <div className={"flex flex-wrap gap-2"}>
+        {icons.map((icon) => (
+          <StackIconCard key={icon.slug} icon={icon} />
+        ))}
+      </div>
+    ) : (
+      <IconDroppablePlaceholder />
+    )}
+  </IconDroppable>
+}
+
 export function Search() {
   const [term, setTerm] = useState("");
   const [draggedIcon, setDraggedIcon] = useState<SimpleIcon | undefined>();
@@ -63,17 +77,7 @@ export function Search() {
             )}
           </IconDroppable>
 
-          <IconDroppable id={"drop-2"} className={"bg-gray-950 p-4  relative rounded col-span-3"}>
-            {icons.length > 0 ? (
-              <div className={"flex flex-wrap gap-2"}>
-                {icons.map((icon) => (
-                  <StackIconCard key={icon.slug} icon={icon} />
-                ))}
-              </div>
-            ) : (
-              <IconDroppablePlaceholder />
-            )}
-          </IconDroppable>
+          <IconDroppableWrapper icons={icons}/>
         </div>
       </DndWrapper>
     </div>
