@@ -1,5 +1,4 @@
 import { DraggableIcon } from "@/app/features/draggable";
-import { useFilteredMemoIconsList } from "@/app/features/search/hooks/use-filtered-memo-icons-list";
 import { IconWithBadge } from "@/app/ui/icon-with-badge";
 import { StackIcon } from "@/components/icons";
 import useIconStore from "@/store/icon-store";
@@ -23,7 +22,8 @@ export function StackIconCard({ icon }: Readonly<{ readonly icon: SimpleIcon }>)
 }
 
 export function FilteredIcons({ term }: { readonly term: string }) {
-  const filteredIcons = useFilteredMemoIconsList(term);
+  const filterIconsBySlug = useIconStore((state) => state.filterIconsBySlug);
+  const filteredIcons = filterIconsBySlug(term);
   return (
     <div
       className={

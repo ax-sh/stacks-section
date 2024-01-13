@@ -33,16 +33,28 @@ describe(useIconStore.name, () => {
   });
 
   it("should find the number of count in selections", () => {
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
-    useIconStore.getState().addIconToSection("slug");
+    const state = useIconStore.getState();
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
+    state.addIconToSection("slug");
     expect(useIconStore.getState().getSlugCount("slug")).toEqual(10);
+  });
+
+  it("count all icons on simple icon", () => {
+    const state = useIconStore.getState();
+    expect(state.allIcons.length).toEqual(2930);
+  });
+
+  it("should filter icon that matches slug", () => {
+    const state = useIconStore.getState();
+    expect(state.filterIconsBySlug("slug")).toEqual([]);
+    expect(state.filterIconsBySlug("fb")).toHaveLength(1);
   });
 });
