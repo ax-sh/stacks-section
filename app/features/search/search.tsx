@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { IconDroppable, IconDroppablePlaceholder } from '@/app/features/droppable';
+import { IconDroppable, IconDroppablePlaceholder } from "@/app/features/droppable";
 
-import { FilteredIcons, StackIconCard } from '@/app/features/search/filtered-icons';
-import { SearchInput } from '@/app/features/search/search-input';
-import useIconStore from '@/store/icon-store';
-import { DragOverlay } from '@dnd-kit/core';
-import React, { useState } from 'react';
-import type { SimpleIcon } from 'simple-icons';
-import { DndWrapper } from '@/app/features/search/dnd-wrapper';
+import { DndWrapper } from "@/app/features/search/dnd-wrapper";
+import { FilteredIcons, StackIconCard } from "@/app/features/search/filtered-icons";
+import { SearchInput } from "@/app/features/search/search-input";
+import useIconStore from "@/store/icon-store";
+import { DragOverlay } from "@dnd-kit/core";
+import React, { useState } from "react";
+import type { SimpleIcon } from "simple-icons";
 
 function IconDroppableWrapper({ icons }: { icons: SimpleIcon[] }) {
   return (
-    <IconDroppable id={'drop-2'} className={'bg-gray-950 p-4  relative rounded col-span-3'}>
+    <IconDroppable id={"drop-2"} className={"bg-gray-950 p-4  relative rounded col-span-3"}>
       {icons.length > 0 ? (
-        <div className={'flex flex-wrap gap-2'}>
+        <div className={"flex flex-wrap gap-2"}>
           {icons.map((icon) => (
             <StackIconCard key={icon.slug} icon={icon} />
           ))}

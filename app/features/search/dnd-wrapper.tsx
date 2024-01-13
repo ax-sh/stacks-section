@@ -1,8 +1,8 @@
+import useIconStore from "@/store/icon-store";
+import { DndContext } from "@dnd-kit/core";
+import type { DragEndEvent } from "@dnd-kit/core/dist/types";
 import React, { Dispatch, PropsWithChildren, SetStateAction } from "react";
 import type { SimpleIcon } from "simple-icons";
-import useIconStore from "@/store/icon-store";
-import type { DragEndEvent } from "@dnd-kit/core/dist/types";
-import { DndContext } from "@dnd-kit/core";
 
 export function DndWrapper({
   children,
