@@ -14,9 +14,9 @@ type IconState = {
 const child = logger.child({ type: "IconStore" });
 
 function getAllIcons() {
-  child.info("loading icons");
+  child.debug("loading icons");
   const icons = Object.values(simpleIcons);
-  child.info("icons loaded");
+  child.debug("icons loaded");
   return icons;
 }
 

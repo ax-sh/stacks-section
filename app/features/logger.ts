@@ -11,6 +11,9 @@ const pinoConfig: LoggerOptions = {
   timestamp: pino.stdTimeFunctions.isoTime,
   name: "stacks-logger-name",
   level: "info",
+  transport: {
+    target: 'pino-pretty'
+  },
   // formatters: {
   // 	level: (label: string, number: number) => {
   // 		console.log(label, , 232323);

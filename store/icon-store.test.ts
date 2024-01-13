@@ -45,4 +45,10 @@ describe(useIconStore.name, () => {
     useIconStore.getState().addIconToSection("slug");
     expect(useIconStore.getState().getSlugCount("slug")).toEqual(10);
   });
+
+  it("should filter icons selections", () => {
+   const state =  useIconStore.getState()
+    console.log(state.allIcons.length);
+    // expect(useIconStore.getState().getSlugCount("slug")).toEqual(10);
+  });
 });
