@@ -2,21 +2,21 @@ import {
   Navbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem
+  NavbarItem,
   // NavbarMenuToggle,
   // NavbarMenu,
   // NavbarMenuItem,
-} from '@nextui-org/navbar';
-import { LiaDragonSolid } from 'react-icons/lia';
+} from "@nextui-org/navbar";
+import { LiaDragonSolid } from "react-icons/lia";
 
 export default function Nav() {
   return (
     <Navbar shouldHideOnScroll>
       <NavbarBrand>
         <LiaDragonSolid size={48} />
-        <p className='font-bold text-inherit'>Stacks</p>
+        <p className="font-bold text-inherit">Stacks</p>
       </NavbarBrand>
-      <NavbarContent className='hidden sm:flex gap-4' justify='center'>
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {/* <NavbarItem> */}
         {/*	<Link color="foreground" href="#"> */}
         {/*		Features */}

@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import * as simpleIcons from 'simple-icons';
+import * as simpleIcons from "simple-icons";
+import { create } from "zustand";
 
 type IconState = {
   sections: Record<string, number>;
@@ -22,12 +22,12 @@ const useIconStore = create<IconState>()((set, get) => ({
     const { sections } = get();
     if (!sections) return [];
     return Object.keys(sections).map((slug) =>
-      Object.values(simpleIcons).find((i) => i.slug === slug)
+      Object.values(simpleIcons).find((i) => i.slug === slug),
     );
   },
   getSlugCount(slug) {
     const { sections } = get();
     return sections[slug] ?? -1;
-  }
+  },
 }));
 export default useIconStore;
