@@ -1,5 +1,6 @@
 import { color } from "console-log-colors";
 import pino, { type LoggerOptions } from "pino";
+import pretty from 'pino-pretty';
 
 const config = {
   serverUrl: process.env.REACT_APP_API_PATH ?? "http://localhost:3000",
@@ -12,7 +13,7 @@ const pinoConfig: LoggerOptions = {
   name: "stacks-logger-name",
   level: "info",
   transport: {
-    target: 'pino-pretty'
+    target: "pino-pretty",
   },
   // formatters: {
   // 	level: (label: string, number: number) => {
