@@ -1,6 +1,7 @@
 import * as simpleIcons from "simple-icons";
 import type { SimpleIcon } from "simple-icons";
 import { create } from "zustand";
+import logger from "@/app/features/logger";
 
 type IconState = {
   sections: Record<string, number>;
@@ -10,10 +11,14 @@ type IconState = {
   allIcons: SimpleIcon[];
 };
 
+const child = logger.child({ type: "IconStore" });
+
+
 function getAllIcons() {
-  console.log("loading icons");
+
+  child.info("loading icons");
   const icons = Object.values(simpleIcons);
-  console.log("icons loaded");
+  child.info("icons loaded");
   return icons;
 }
 
