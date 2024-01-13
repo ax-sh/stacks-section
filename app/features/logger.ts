@@ -1,16 +1,16 @@
-import { color } from 'console-log-colors';
-import pino, { type LoggerOptions } from 'pino';
+import { color } from "console-log-colors";
+import pino, { type LoggerOptions } from "pino";
 
 const config = {
-  serverUrl: process.env.REACT_APP_API_PATH ?? 'http://localhost:3000',
+  serverUrl: process.env.REACT_APP_API_PATH ?? "http://localhost:3000",
   env: process.env.NODE_ENV,
-  publicUrl: process.env.PUBLIC_URL
+  publicUrl: process.env.PUBLIC_URL,
 };
 
 const pinoConfig: LoggerOptions = {
   timestamp: pino.stdTimeFunctions.isoTime,
-  name: 'stacks-logger-name',
-  level: 'info',
+  name: "stacks-logger-name",
+  level: "info",
   // formatters: {
   // 	level: (label: string, number: number) => {
   // 		console.log(label, , 232323);
@@ -34,8 +34,8 @@ const pinoConfig: LoggerOptions = {
 
         console.log(
           `${color.yellow(`[${time}]`)} ${color.green(levelString)} (${color.cyanBright(
-            type
-          )}) ${msg}`
+            type,
+          )}) ${msg}`,
         );
 
         // console.log(
@@ -45,12 +45,12 @@ const pinoConfig: LoggerOptions = {
         // 	"color: green",
         // 	"color: green"
         // );
-      }
+      },
       // error: function (o) {
       // 	//process error log object
       // },
-    }
-  }
+    },
+  },
 };
 // todo
 // if (config.serverUrl) {
