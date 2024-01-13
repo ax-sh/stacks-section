@@ -1,23 +1,23 @@
 "use client";
 
 import {
-	IconDroppable,
-	IconDroppablePlaceholder,
+  IconDroppable,
+  IconDroppablePlaceholder,
 } from "@/app/features/droppable";
 import logger from "@/app/features/logger";
 import {
-	FilteredIcons,
-	StackIconCard,
+  FilteredIcons,
+  StackIconCard,
 } from "@/app/features/search/filtered-icons";
 import { SearchInput } from "@/app/features/search/search-input";
 import useIconStore from "@/store";
 import { DndContext, DragOverlay } from "@dnd-kit/core";
 import type { DragEndEvent } from "@dnd-kit/core/dist/types";
 import React, {
-	type Dispatch,
-	type PropsWithChildren,
-	type SetStateAction,
-	useState,
+  type Dispatch,
+  type PropsWithChildren,
+  type SetStateAction,
+  useState,
 } from "react";
 import type { SimpleIcon } from "simple-icons";
 
@@ -25,58 +25,58 @@ const child = logger.child({ type: "search" });
 child.info("search parent");
 
 function DndWrapper({
-	children,
-	setDraggedIcon,
+  children,
+  setDraggedIcon,
 }: PropsWithChildren<{
-	setDraggedIcon: Dispatch<SetStateAction<SimpleIcon | undefined>>;
+  setDraggedIcon: Dispatch<SetStateAction<SimpleIcon | undefined>>;
 }>) {
-	const addIconToSection = useIconStore((state) => state.addIconToSection);
-	function handleDragEnd({ over, active, ...rest }: DragEndEvent) {
-		setDraggedIcon(undefined);
-		addIconToSection(active.data.current?.slug as string);
-	}
+  const addIconToSection = useIconStore((state) => state.addIconToSection);
+  function handleDragEnd({ over, active, ...rest }: DragEndEvent) {
+    setDraggedIcon(undefined);
+    addIconToSection(active.data.current?.slug as string);
+  }
 
-	function handleDragStart({ over, active, ...rest }: DragEndEvent) {
-		setDraggedIcon(active.data.current as SimpleIcon);
-	}
+  function handleDragStart({ over, active, ...rest }: DragEndEvent) {
+    setDraggedIcon(active.data.current as SimpleIcon);
+  }
 
-	return (
-		<DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-			{children}
-		</DndContext>
-	);
+  return (
+    <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
+      {children}
+    </DndContext>
+  );
 }
 
 export function Search() {
-	const [term, setTerm] = useState("");
-	const [draggedIcon, setDraggedIcon] = useState<SimpleIcon | undefined>();
-	const getIcons = useIconStore((state) => state.getIcons);
+  const [term, setTerm] = useState("");
+  const [draggedIcon, setDraggedIcon] = useState<SimpleIcon | undefined>();
+  const getIcons = useIconStore((state) => state.getIcons);
 
-	const icons = getIcons();
+  const icons = getIcons();
 
-	return (
-		<div className={"flex flex-col gap-4"}>
-			<SearchInput term={term} setTerm={setTerm} />
-			<DndWrapper setDraggedIcon={setDraggedIcon}>
-				<FilteredIcons term={term} />
-				<DragOverlay>
-					{/* note needed for fixing overflow hidden issue */}
-					{!!draggedIcon && (
-						<StackIconCard key={draggedIcon.slug} icon={draggedIcon} />
-					)}
-				</DragOverlay>
-				<IconDroppable id={"drop"} className={"bg-gray-950 p-4 h-40 relative"}>
-					{icons.length === 0 ? (
-						<IconDroppablePlaceholder />
-					) : (
-						<div className={"flex flex-wrap gap-2 "}>
-							{icons.map((icon) => (
-								<StackIconCard key={icon.slug} icon={icon} />
-							))}
-						</div>
-					)}
-				</IconDroppable>
-			</DndWrapper>
-		</div>
-	);
+  return (
+    <div className={"flex flex-col gap-4"}>
+      <SearchInput term={term} setTerm={setTerm} />
+      <DndWrapper setDraggedIcon={setDraggedIcon}>
+        <FilteredIcons term={term} />
+        <DragOverlay>
+          {/* note needed for fixing overflow hidden issue */}
+          {!!draggedIcon && (
+            <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />
+          )}
+        </DragOverlay>
+        <IconDroppable id={"drop"} className={"bg-gray-950 p-4 h-40 relative"}>
+          {icons.length === 0 ? (
+            <IconDroppablePlaceholder />
+          ) : (
+            <div className={"flex flex-wrap gap-2 "}>
+              {icons.map((icon) => (
+                <StackIconCard key={icon.slug} icon={icon} />
+              ))}
+            </div>
+          )}
+        </IconDroppable>
+      </DndWrapper>
+    </div>
+  );
 }
