@@ -50,14 +50,14 @@ export function Search() {
           {!!draggedIcon && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
         </DragOverlay>
         <IconDroppable id={"drop"} className={"bg-gray-950 p-4 h-40 relative"}>
-          {icons.length === 0 ? (
-            <IconDroppablePlaceholder />
-          ) : (
+          {icons.length > 0 ? (
             <div className={"flex flex-wrap gap-2"}>
               {icons.map((icon) => (
                 <StackIconCard key={icon.slug} icon={icon} />
               ))}
             </div>
+          ) : (
+            <IconDroppablePlaceholder />
           )}
         </IconDroppable>
       </DndWrapper>
