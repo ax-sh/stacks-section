@@ -7,7 +7,7 @@ const child = logger.child({ type: "useFilteredMemoIconsList" });
 export function useFilteredMemoIconsList(term: string) {
   return useMemo(() => {
     if (!term) return [];
-    const predicate = (i: SimpleIcon) => i.title.toLowerCase().includes(term);
+    const predicate = (i: SimpleIcon) => i.title.toLowerCase().includes(term.toLowerCase());
     child.debug("filter start");
     const results = useIconStore.getState().allIcons.filter(predicate);
     child.debug("filter end");
