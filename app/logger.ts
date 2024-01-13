@@ -1,11 +1,11 @@
 import { color } from "console-log-colors";
 import pino, { type LoggerOptions } from "pino";
-import pretty from "pino-pretty";
+// import pretty from "pino-pretty";
 
-const stream = pretty({
-  colorize: true,
-  sync: true,
-});
+// const stream = pretty({
+//   colorize: true,
+//   sync: true,
+// });
 
 const config = {
   serverUrl: process.env.REACT_APP_API_PATH ?? "http://localhost:3000",
@@ -16,10 +16,10 @@ const config = {
 const pinoConfig: LoggerOptions = {
   timestamp: pino.stdTimeFunctions.isoTime,
   name: "stacks-logger-name",
-  level: "info",
-  transport: {
-    target: "pino-pretty",
-  },
+  // level: "info",
+  // transport: {
+  //   target: "pino-pretty",
+  // },
   // formatters: {
   // 	level: (label: string, number: number) => {
   // 		console.log(label, , 232323);
