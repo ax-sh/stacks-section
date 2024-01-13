@@ -1,6 +1,10 @@
 import { color } from "console-log-colors";
 import pino, { type LoggerOptions } from "pino";
-import pretty from 'pino-pretty';
+import pretty from "pino-pretty";
+
+const stream = pretty({
+  colorize: true
+})
 
 const config = {
   serverUrl: process.env.REACT_APP_API_PATH ?? "http://localhost:3000",
@@ -75,7 +79,7 @@ const pinoConfig: LoggerOptions = {
 // 	};
 // }
 
-const logger = pino(pinoConfig);
+const logger = pino(pinoConfig, stream);
 
 export const log = (message: unknown) => {
   logger.info(message);
