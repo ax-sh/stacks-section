@@ -12,12 +12,12 @@ type IconState = Required<{
   filterIconsBySlug(slug: string): SimpleIcon[];
 }>;
 
-const child = logger.child({ type: "IconStore" });
+const log = logger.child({ type: "IconStore" });
 
 function getAllIcons() {
-  child.debug("loading icons");
+  log.debug("loading icons");
   const icons = Object.values(simpleIcons);
-  child.debug("icons loaded");
+  log.debug("icons loaded");
   return icons;
 }
 

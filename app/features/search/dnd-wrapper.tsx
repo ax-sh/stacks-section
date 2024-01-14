@@ -1,8 +1,11 @@
+import logger from "@/app/logger";
 import useIconStore from "@/store/icon-store";
 import { DataRef, DndContext } from "@dnd-kit/core";
 import type { DragEndEvent } from "@dnd-kit/core/dist/types";
 import React, { Dispatch, PropsWithChildren, SetStateAction } from "react";
 import type { SimpleIcon } from "simple-icons";
+
+const log = logger.child({ type: "DndWrapper" });
 
 export type IconPayload = { icon: SimpleIcon; type: "icon" };
 
@@ -19,22 +22,32 @@ export function DndWrapper({
   const addIconToSection = useIconStore((state) => state.addIconToSection);
   function handleDragEnd({ over, active, ...rest }: DragEndEvent) {
     const data = definePayload(active.data);
-    console.log(data, "<<");
+    const overData = over?.data;
     const icon = data?.icon;
     setDraggedIcon(undefined);
-    console.log(over, rest, 3333);
-    // addIconToSection(icon?.slug);
+
+    // log.info(over);
+    // if (over.accepts.includes(data.type)) {
+    //   // do stuff
+    // }
+    addIconToSection(icon?.slug);
   }
 
   function handleDragStart({ over, active, ...rest }: DragEndEvent) {
     const data = definePayload(active.data);
-    console.log(data, "<<");
+    log.info(over);
     const icon = data?.icon;
     setDraggedIcon(icon);
   }
 
   return (
-    <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
+    <DndContext
+      onDragEnd={handleDragEnd}
+      onDragStart={handleDragStart}
+      onDragMove={(e) => {
+        log.info({ e });
+      }}
+    >
       {children}
     </DndContext>
   );

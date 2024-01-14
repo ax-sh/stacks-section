@@ -37,12 +37,16 @@ export function IconDroppablePlaceholder() {
   );
 }
 
-type IconDroppableWrapperProps = Readonly<{ icons: SimpleIcon[]; className?: string }>;
+type IconDroppableWrapperProps = Readonly<{
+  icons: SimpleIcon[];
+  className?: string;
+  id: UniqueIdentifier;
+}>;
 
-export function IconDroppableWrapper({ icons, className }: IconDroppableWrapperProps) {
+export function IconDroppableWrapper({ icons, className, id }: IconDroppableWrapperProps) {
   return (
     <IconDroppable
-      id={"drop-2"}
+      id={id}
       className={clsx(
         "bg-gray-700 p-2 rounded overflow-auto",
         "before:content-['Drop_Here'] before:block before:pb-2 before:text-red-500 ",
