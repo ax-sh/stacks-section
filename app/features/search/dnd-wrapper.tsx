@@ -28,7 +28,7 @@ export function DndWrapper({
     const droppedAt = over?.id;
     const icon = data?.icon;
 
-    if (!overData.accepts.includes(data.type)) {
+    if (over && !overData.accepts.includes(data.type)) {
       console.log("Drop item not supported");
       return;
     }
