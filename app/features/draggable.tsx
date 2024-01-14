@@ -23,8 +23,7 @@ export function DraggableIcon({
     <div
       ref={setNodeRef}
       style={{
-        // Outputs `translate3d(x, y, 0)`
-        transform: CSS.Translate.toString(transform),
+        transform: CSS.Translate.toString(transform), // Outputs `translate3d(x, y, 0)`
       }}
       className={clsx(isDragging && " invisible")}
       {...listeners}
