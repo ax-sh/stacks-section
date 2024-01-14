@@ -26,7 +26,7 @@ export function DndWrapper({
     const icon = data?.icon;
     setDraggedIcon(undefined);
 
-    // log.info(over);
+    log.info({ over });
     // if (over.accepts.includes(data.type)) {
     //   // do stuff
     // }
@@ -44,9 +44,9 @@ export function DndWrapper({
     <DndContext
       onDragEnd={handleDragEnd}
       onDragStart={handleDragStart}
-      onDragMove={(e) => {
-        log.info({ e });
-      }}
+      // onDragMove={(e) => {
+      //   log.info({ e });
+      // }}
     >
       {children}
     </DndContext>
