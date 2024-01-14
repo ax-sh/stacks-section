@@ -11,7 +11,7 @@ export function IconDroppable(
   const { isOver, setNodeRef } = useDroppable({
     id: props.id,
     data: {
-      accepts: ["type1", "type2"],
+      accepts: ["icon"],
     },
   });
   const style = {

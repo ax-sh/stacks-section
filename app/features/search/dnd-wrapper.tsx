@@ -22,7 +22,8 @@ export function DndWrapper({
     console.log(data, "<<");
     const icon = data?.icon;
     setDraggedIcon(undefined);
-    addIconToSection(icon?.slug);
+    console.log(over, active, rest,3333);
+    // addIconToSection(icon?.slug);
   }
 
   function handleDragStart({ over, active, ...rest }: DragEndEvent) {
