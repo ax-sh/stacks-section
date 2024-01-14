@@ -16,14 +16,13 @@ export function IconDroppable(
     id: props.id,
     data: payload,
   });
-  const style = {
-    opacity: isOver ? 1 : 0.5,
-  };
 
   return (
     <section
       ref={setNodeRef}
-      style={style}
+      style={{
+        opacity: isOver ? 1 : 0.5,
+      }}
       className={clsx(props.className, isOver && "bg-red-400")}
     >
       {props.children}
