@@ -7,25 +7,25 @@ import { SearchInput } from "@/app/features/search/search-input";
 import useIconStore from "@/store/icon-store";
 import { DragOverlay } from "@dnd-kit/core";
 
+import clsx from "clsx";
 import React, { useState } from "react";
 import type { SimpleIcon } from "simple-icons";
 import { useShallow } from "zustand/react/shallow";
 
-function IconDroppableWrapper({ icons }: Readonly<{ icons: SimpleIcon[] }>) {
+type IconDroppableWrapperProps = Readonly<{ icons: SimpleIcon[]; className?: string }>;
+function IconDroppableWrapper({ icons, className }: IconDroppableWrapperProps) {
   return (
-    <div className={"grid grid-cols-12 grid-rows-1 h-80 gap-4"}>
-      <IconDroppable id={"drop-2"} className={"bg-gray-950 p-4  relative rounded col-span-3"}>
-        {icons.length > 0 ? (
-          <div className={"flex flex-wrap gap-2"}>
-            {icons.map((icon) => (
-              <StackIconCard key={icon.slug} icon={icon} />
-            ))}
-          </div>
-        ) : (
-          <IconDroppablePlaceholder />
-        )}
-      </IconDroppable>
-    </div>
+    <IconDroppable id={"drop-2"} className={clsx("bg-gray-700 p-2 rounded overflow-auto", className)}>
+      {icons.length > 0 ? (
+        <div className={"flex flex-wrap gap-2"}>
+          {icons.map((icon) => (
+            <StackIconCard key={icon.slug} icon={icon} />
+          ))}
+        </div>
+      ) : (
+        <IconDroppablePlaceholder />
+      )}
+    </IconDroppable>
   );
 }
 
@@ -46,8 +46,21 @@ export function Search() {
           {/* note needed for fixing overflow hidden issue */}
           {!!draggedIcon && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
         </DragOverlay>
+        <section className={"grid grid-cols-12 grid-rows-1 h-80 gap-4"}>
+          <div className={"relative col-span-10 row-span-1"}>
+            <IconDroppableWrapper icons={icons} className={"absolute inset-0"} />
+          </div>
 
-        <IconDroppableWrapper icons={icons} />
+          <div className={clsx("relative col-span-2 row-span-1", "flex flex-col gap-2 [&>*]:h-20")}>
+            <IconDroppableWrapper icons={icons} className={"relative"} />
+            <IconDroppableWrapper icons={icons} className={"relative "} />
+            {/*<div className={" h-full w-full bg-red-400 relative >*/}
+            {/*  */}
+            {/* */}
+            {/*  <IconDroppableWrapper icons={icons} className={"absolute inset-0"} />*/}
+            {/*</div>*/}
+          </div>
+        </section>
       </DndWrapper>
     </div>
   );
