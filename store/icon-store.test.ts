@@ -17,7 +17,7 @@ describe(useIconStore.name, () => {
   });
 
   it("should have one selection after invoking function", async () => {
-    const state = useIconStore.getState()
+    const state = useIconStore.getState();
     state.addIconToSection("test");
 
     expect(state.sections).toEqual({ test: 1 });
