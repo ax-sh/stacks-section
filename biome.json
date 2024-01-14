@@ -31,7 +31,8 @@
       "trailingComma": "all",
       "quoteProperties": "asNeeded",
       "bracketSpacing": true,
-      "bracketSameLine": false
+      "bracketSameLine": false,
+      "lineEnding": "lf"
     }
   }
 }
