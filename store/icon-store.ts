@@ -32,12 +32,14 @@ const useIconStore = create<IconState>()((set, get) => ({
     });
   },
   getIcons() {
-    const { sections } = get();
+    const { sections, allIcons } = get();
     if (!sections) return [] as SimpleIcon[];
-    const icons = get().allIcons;
-    return Object.keys(sections).map((slug) =>
-      icons.find((icon) => icon.slug === slug),
-    ) as SimpleIcon[];
+
+    const findIconWithSlug = (slug: string) => {
+      return allIcons.find((icon) => icon.slug === slug) as SimpleIcon;
+    };
+
+    return Object.keys(sections).map(findIconWithSlug).filter(Boolean);
   },
   getSlugCount(slug) {
     const { sections } = get();

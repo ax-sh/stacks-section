@@ -22,7 +22,7 @@ export function DndWrapper({
     console.log(data, "<<");
     const icon = data?.icon;
     setDraggedIcon(undefined);
-    console.log(over, active, rest,3333);
+    console.log(over, rest, 3333);
     // addIconToSection(icon?.slug);
   }
 
