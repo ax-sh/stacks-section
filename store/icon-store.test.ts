@@ -17,15 +17,16 @@ describe(useIconStore.name, () => {
   });
 
   it("should have one selection after invoking function", async () => {
-    useIconStore.getState().addIconToSection("test");
+    const state = useIconStore.getState()
+    state.addIconToSection("test");
 
-    expect(useIconStore.getState().sections).toEqual({ test: 1 });
+    expect(state.sections).toEqual({ test: 1 });
 
-    useIconStore.getState().addIconToSection("test");
-    useIconStore.getState().addIconToSection("test");
-    useIconStore.getState().addIconToSection("test");
-    useIconStore.getState().addIconToSection("test");
-    expect(useIconStore.getState().sections).toEqual({ test: 5 });
+    state.addIconToSection("test");
+    state.addIconToSection("test");
+    state.addIconToSection("test");
+    state.addIconToSection("test");
+    expect(state.sections).toEqual({ test: 5 });
   });
 
   it("should find the number of count in selections when empty", () => {
