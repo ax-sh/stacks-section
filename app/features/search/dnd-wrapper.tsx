@@ -25,12 +25,14 @@ export function DndWrapper({
   function handleDragEnd({ over, active, ...rest }: DragEndEvent) {
     const data = defineDraggablePayload(active.data);
     const overData = defineDroppablePayload(over?.data);
+    const droppedAt = over?.id;
     const icon = data?.icon;
-    console.log({ type: "end", over, overData, data });
-    // if (overData.accepts.includes(data.type)) {
-    //   // do stuff
-    // }
-    if (!overData) return;
+
+    if (!overData.accepts.includes(data.type)) {
+      console.log("Drop item not supported");
+      return;
+    }
+    console.log({ type: "end", droppedAt, over, overData, data });
     addIconToSection(icon.slug);
     setDraggedIcon(undefined);
   }
