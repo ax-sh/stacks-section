@@ -37,7 +37,6 @@ export function Search() {
           <div className={clsx("relative col-span-2 row-span-1", "flex flex-col gap-2 [&>*]:h-20")}>
             <IconDroppableWrapper icons={icons} className={"relative"} />
             <IconDroppableWrapper icons={icons} className={"relative "} />
-
           </div>
         </section>
       </DndWrapper>

@@ -40,7 +40,11 @@ export function IconDroppableWrapper({ icons, className }: IconDroppableWrapperP
   return (
     <IconDroppable
       id={"drop-2"}
-      className={clsx("bg-gray-700 p-2 rounded overflow-auto","before:content-['Drop_Here'] before:block before:pb-2 before::text-red-500 " ,className)}
+      className={clsx(
+        "bg-gray-700 p-2 rounded overflow-auto",
+        "before:content-['Drop_Here'] before:block before:pb-2 before::text-red-500 ",
+        className,
+      )}
     >
       {icons.length > 0 ? (
         <div className={"flex flex-wrap gap-2"}>
