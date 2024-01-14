@@ -24,13 +24,14 @@ export function DndWrapper({
     const data = definePayload(active.data);
     const overData = over?.data;
     const icon = data?.icon;
-    setDraggedIcon(undefined);
 
     log.info({ over });
     // if (over.accepts.includes(data.type)) {
     //   // do stuff
     // }
+    if(!over)return
     addIconToSection(icon?.slug);
+    setDraggedIcon(undefined);
   }
 
   function handleDragStart({ over, active, ...rest }: DragEndEvent) {
