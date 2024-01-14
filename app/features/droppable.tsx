@@ -1,5 +1,5 @@
 import { StackIconCard } from "@/app/features/search/filtered-icons";
-import { DroppableIconData } from "@/app/features/types";
+import { DroppableIconData } from "@/app/types";
 import { type UniqueIdentifier, useDroppable } from "@dnd-kit/core";
 import clsx from "clsx";
 import React, { type PropsWithChildren } from "react";

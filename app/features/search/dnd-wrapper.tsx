@@ -1,5 +1,5 @@
-import { DraggableIconData } from "@/app/features/types";
 import logger from "@/app/logger";
+import { DraggableIconData } from "@/app/types";
 import useIconStore from "@/store/icon-store";
 import { DataRef, DndContext } from "@dnd-kit/core";
 import type { DragEndEvent } from "@dnd-kit/core/dist/types";
