@@ -10,7 +10,10 @@ export function DraggableIcon({
 }: PropsWithChildren<{ id: UniqueIdentifier; data: SimpleIcon }>) {
   const { isDragging, attributes, listeners, setNodeRef, transform } = useDraggable({
     id,
-    data,
+    data: {
+      type: "type1",
+      icon: data,
+    },
   });
 
   return (

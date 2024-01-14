@@ -10,6 +10,9 @@ export function IconDroppable(
 ) {
   const { isOver, setNodeRef } = useDroppable({
     id: props.id,
+    data: {
+      accepts: ["type1", "type2"],
+    },
   });
   const style = {
     opacity: isOver ? 1 : 0.5,
@@ -42,7 +45,7 @@ export function IconDroppableWrapper({ icons, className }: IconDroppableWrapperP
       id={"drop-2"}
       className={clsx(
         "bg-gray-700 p-2 rounded overflow-auto",
-        "before:content-['Drop_Here'] before:block before:pb-2 before::text-red-500 ",
+        "before:content-['Drop_Here'] before:block before:pb-2 before:text-red-500 ",
         className,
       )}
     >
