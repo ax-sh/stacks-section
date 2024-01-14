@@ -1,4 +1,5 @@
 import { StackIconCard } from "@/app/features/search/filtered-icons";
+import { DroppableIconData } from "@/app/types";
 import { type UniqueIdentifier, useDroppable } from "@dnd-kit/core";
 import clsx from "clsx";
 import React, { type PropsWithChildren } from "react";
@@ -8,17 +9,20 @@ import type { SimpleIcon } from "simple-icons";
 export function IconDroppable(
   props: PropsWithChildren<{ id: UniqueIdentifier; className: string }>,
 ) {
+  const payload: DroppableIconData = {
+    accepts: ["icon"],
+  };
   const { isOver, setNodeRef } = useDroppable({
     id: props.id,
+    data: payload,
   });
-  const style = {
-    opacity: isOver ? 1 : 0.5,
-  };
 
   return (
     <section
       ref={setNodeRef}
-      style={style}
+      style={{
+        opacity: isOver ? 1 : 0.5,
+      }}
       className={clsx(props.className, isOver && "bg-red-400")}
     >
       {props.children}
@@ -34,15 +38,19 @@ export function IconDroppablePlaceholder() {
   );
 }
 
-type IconDroppableWrapperProps = Readonly<{ icons: SimpleIcon[]; className?: string }>;
+type IconDroppableWrapperProps = Readonly<{
+  icons: SimpleIcon[];
+  className?: string;
+  id: UniqueIdentifier;
+}>;
 
-export function IconDroppableWrapper({ icons, className }: IconDroppableWrapperProps) {
+export function IconDroppableWrapper({ icons, className, id }: IconDroppableWrapperProps) {
   return (
     <IconDroppable
-      id={"drop-2"}
+      id={id}
       className={clsx(
         "bg-gray-700 p-2 rounded overflow-auto",
-        "before:content-['Drop_Here'] before:block before:pb-2 before::text-red-500 ",
+        "before:content-['Drop_Here'] before:block before:pb-2 before:text-red-500 ",
         className,
       )}
     >

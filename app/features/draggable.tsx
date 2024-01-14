@@ -1,5 +1,7 @@
+import { DraggableIconData } from "@/app/types";
 import { type UniqueIdentifier, useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
+import clsx from "clsx";
 import React, { type PropsWithChildren } from "react";
 import { SimpleIcon } from "simple-icons";
 
@@ -8,9 +10,13 @@ export function DraggableIcon({
   id,
   data,
 }: PropsWithChildren<{ id: UniqueIdentifier; data: SimpleIcon }>) {
+  const payload: DraggableIconData = {
+    type: "icon",
+    icon: data,
+  };
   const { isDragging, attributes, listeners, setNodeRef, transform } = useDraggable({
     id,
-    data,
+    data: payload,
   });
 
   return (
@@ -19,8 +25,8 @@ export function DraggableIcon({
       style={{
         // Outputs `translate3d(x, y, 0)`
         transform: CSS.Translate.toString(transform),
-        visibility: isDragging ? "hidden" : "visible",
       }}
+      className={clsx(isDragging && " invisible")}
       {...listeners}
       {...attributes}
     >
