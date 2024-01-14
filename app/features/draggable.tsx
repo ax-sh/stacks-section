@@ -1,4 +1,4 @@
-import { IconPayload } from "@/app/features/search/dnd-wrapper";
+import { DraggableIconData } from "@/app/features/types";
 import { type UniqueIdentifier, useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import clsx from "clsx";
@@ -10,7 +10,7 @@ export function DraggableIcon({
   id,
   data,
 }: PropsWithChildren<{ id: UniqueIdentifier; data: SimpleIcon }>) {
-  const payload: IconPayload = {
+  const payload: DraggableIconData = {
     type: "icon",
     icon: data,
   };

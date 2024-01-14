@@ -1,3 +1,6 @@
+import { IconDroppable } from "@/app/features/droppable";
+import type { SimpleIcon } from "simple-icons";
+
 export type Id = string | number;
 
 export type Group = {
@@ -10,3 +13,6 @@ export type Icon = {
   groupId: Id;
   content: string;
 };
+
+export type DraggableIconData = { icon: SimpleIcon; type: "icon" };
+export type DroppableIconData = { accepts: ["icon"] };

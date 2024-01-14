@@ -1,4 +1,5 @@
 import { StackIconCard } from "@/app/features/search/filtered-icons";
+import { DroppableIconData } from "@/app/features/types";
 import { type UniqueIdentifier, useDroppable } from "@dnd-kit/core";
 import clsx from "clsx";
 import React, { type PropsWithChildren } from "react";
@@ -8,11 +9,12 @@ import type { SimpleIcon } from "simple-icons";
 export function IconDroppable(
   props: PropsWithChildren<{ id: UniqueIdentifier; className: string }>,
 ) {
+  const payload: DroppableIconData = {
+    accepts: ["icon"],
+  };
   const { isOver, setNodeRef } = useDroppable({
     id: props.id,
-    data: {
-      accepts: ["icon"],
-    },
+    data: payload,
   });
   const style = {
     opacity: isOver ? 1 : 0.5,

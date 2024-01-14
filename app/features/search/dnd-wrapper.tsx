@@ -1,3 +1,4 @@
+import { DraggableIconData } from "@/app/features/types";
 import logger from "@/app/logger";
 import useIconStore from "@/store/icon-store";
 import { DataRef, DndContext } from "@dnd-kit/core";
@@ -7,10 +8,8 @@ import type { SimpleIcon } from "simple-icons";
 
 const log = logger.child({ type: "DndWrapper" });
 
-export type IconPayload = { icon: SimpleIcon; type: "icon" };
-
 function definePayload(data: DataRef) {
-  return data.current as IconPayload;
+  return data.current as DraggableIconData;
 }
 
 export function DndWrapper({
@@ -29,7 +28,7 @@ export function DndWrapper({
     // if (over.accepts.includes(data.type)) {
     //   // do stuff
     // }
-    if(!over)return
+    if (!over) return;
     addIconToSection(icon?.slug);
     setDraggedIcon(undefined);
   }
