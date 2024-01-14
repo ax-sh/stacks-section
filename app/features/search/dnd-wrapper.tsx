@@ -4,7 +4,7 @@ import type { DragEndEvent } from "@dnd-kit/core/dist/types";
 import React, { Dispatch, PropsWithChildren, SetStateAction } from "react";
 import type { SimpleIcon } from "simple-icons";
 
-type IconPayload = { icon: SimpleIcon; type: string[] };
+export type IconPayload = { icon: SimpleIcon; type: "icon" };
 
 function definePayload(data: DataRef) {
   return data.current as IconPayload;
