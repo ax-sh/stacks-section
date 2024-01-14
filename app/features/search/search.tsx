@@ -36,12 +36,16 @@ export function Search() {
         </DragOverlay>
         <section className={"grid grid-cols-12 grid-rows-1 h-80 gap-4"}>
           <div className={"relative col-span-10 row-span-1"}>
-            <IconDroppableWrapper id={"large-droppable"} icons={icons} className={"absolute inset-0"} />
+            <IconDroppableWrapper
+              id={"large-droppable"}
+              icons={icons}
+              className={"absolute inset-0"}
+            />
           </div>
 
           <div className={clsx("relative col-span-2 row-span-1", "flex flex-col gap-2 [&>*]:h-20")}>
-            <IconDroppableWrapper id={'droppable-1'} icons={icons} className={"relative"} />
-            <IconDroppableWrapper id={'droppable-2'} icons={icons} className={"relative "} />
+            <IconDroppableWrapper id={"droppable-1"} icons={icons} className={"relative"} />
+            <IconDroppableWrapper id={"droppable-2"} icons={icons} className={"relative "} />
           </div>
         </section>
       </DndWrapper>
