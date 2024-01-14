@@ -14,7 +14,7 @@ import { useShallow } from "zustand/react/shallow";
 
 export function Search() {
   const [term, setTerm] = useState("");
-  const [draggedIcon, setDraggedIcon] = useState<SimpleIcon >();
+  const [draggedIcon, setDraggedIcon] = useState<SimpleIcon>();
   const getIcons = useIconStore(useShallow((state) => state.getIcons));
 
   const icons = getIcons();
