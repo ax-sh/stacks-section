@@ -1,5 +1,5 @@
 import logger from "@/app/logger";
-import { DraggableIconData } from "@/app/types";
+import { DraggableIconData, DroppableIconData } from "@/app/types";
 import useIconStore from "@/store/icon-store";
 import { DataRef, DndContext } from "@dnd-kit/core";
 import type { DragEndEvent } from "@dnd-kit/core/dist/types";
@@ -8,8 +8,11 @@ import type { SimpleIcon } from "simple-icons";
 
 const log = logger.child({ type: "DndWrapper" });
 
-function definePayload(data: DataRef) {
+function defineDraggablePayload(data: DataRef) {
   return data.current as DraggableIconData;
+}
+function defineDroppablePayload(data: DataRef | undefined) {
+  return data?.current as DroppableIconData;
 }
 
 export function DndWrapper({
@@ -20,21 +23,20 @@ export function DndWrapper({
 }>) {
   const addIconToSection = useIconStore((state) => state.addIconToSection);
   function handleDragEnd({ over, active, ...rest }: DragEndEvent) {
-    const data = definePayload(active.data);
-    const overData = over?.data;
+    const data = defineDraggablePayload(active.data);
+    const overData = defineDroppablePayload(over?.data);
     const icon = data?.icon;
-
-    log.info({ over });
-    // if (over.accepts.includes(data.type)) {
+    log.info({ overData });
+    // if (overData.accepts.includes(data.type)) {
     //   // do stuff
     // }
-    if (!over) return;
-    addIconToSection(icon?.slug);
+    if (!overData) return;
+    addIconToSection(icon.slug);
     setDraggedIcon(undefined);
   }
 
   function handleDragStart({ over, active, ...rest }: DragEndEvent) {
-    const data = definePayload(active.data);
+    const data = defineDraggablePayload(active.data);
     log.info(over);
     const icon = data?.icon;
     setDraggedIcon(icon);
