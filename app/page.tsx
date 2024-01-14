@@ -10,10 +10,8 @@ export default function Home() {
         export to svg or html string
         */}
         <Search />
-
       </section>
       {/* <section className={"container mx-auto"}>icons</section> */}
-
     </main>
   );
 }

@@ -9,6 +9,7 @@ import { DragOverlay } from "@dnd-kit/core";
 
 import React, { useState } from "react";
 import type { SimpleIcon } from "simple-icons";
+import { useShallow } from "zustand/react/shallow";
 
 function IconDroppableWrapper({ icons }: Readonly<{ icons: SimpleIcon[] }>) {
   return (
@@ -31,7 +32,7 @@ function IconDroppableWrapper({ icons }: Readonly<{ icons: SimpleIcon[] }>) {
 export function Search() {
   const [term, setTerm] = useState("");
   const [draggedIcon, setDraggedIcon] = useState<SimpleIcon | undefined>();
-  const getIcons = useIconStore((state) => state.getIcons);
+  const getIcons = useIconStore(useShallow((state) => state.getIcons));
 
   const icons = getIcons();
 
