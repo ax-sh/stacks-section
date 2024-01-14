@@ -26,7 +26,7 @@ export function DndWrapper({
     const data = defineDraggablePayload(active.data);
     const overData = defineDroppablePayload(over?.data);
     const icon = data?.icon;
-    log.info({ overData , data});
+    console.log({ type:'end',over, overData, data });
     // if (overData.accepts.includes(data.type)) {
     //   // do stuff
     // }
@@ -39,9 +39,11 @@ export function DndWrapper({
     const data = defineDraggablePayload(active.data);
     const overData = defineDroppablePayload(over?.data);
     console.log({
+      type:'start',
+      over,
       overData,
       data,
-      rest
+      rest,
     });
     const icon = data?.icon;
     setDraggedIcon(icon);
