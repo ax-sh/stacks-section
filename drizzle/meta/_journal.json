@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1706108273482,
+      "tag": "0000_rare_vulcan",
+      "breakpoints": true
+    }
+  ]
+}
