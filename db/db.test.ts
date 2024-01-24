@@ -15,7 +15,10 @@ function buildMemoryDB() {
 
 async function seedDB(db: BetterSQLite3Database<typeof schema>) {
   const data = { id: faker.commerce.price() };
-  await db.insert(users).values(faker.helpers.multiple(() => data));
+  await db
+    .insert(users)
+    .values(faker.helpers.multiple(() => data))
+    .onConflictDoNothing();
 }
 
 describe("Database memory", () => {
@@ -25,7 +28,7 @@ describe("Database memory", () => {
 
     const user = db.select().from(users).all();
     const userQuery = await db.query.users.findMany();
-    // expect(user).toHaveLength(1);
-    console.log(userQuery);
+    expect.hasAssertions();
+    expect(user).toEqual(userQuery);
   });
 });
