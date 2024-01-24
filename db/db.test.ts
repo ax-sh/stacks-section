@@ -17,7 +17,8 @@ describe("Database memory", () => {
     const db = buildMemoryDB();
     await db.insert(users).values({ id: "one" });
     const user = db.select().from(users).all();
-    console.log(user);
+
     expect(user).toHaveLength(1);
+    console.log(user,  await  db.query.users.findMany());
   });
 });
