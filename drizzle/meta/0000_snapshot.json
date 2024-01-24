@@ -34,9 +34,7 @@
       "indexes": {
         "users_id_unique": {
           "name": "users_id_unique",
-          "columns": [
-            "id"
-          ],
+          "columns": ["id"],
           "isUnique": true
         }
       },
