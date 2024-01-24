@@ -1,5 +1,3 @@
-describe(
-	'Database memory',()=>{
-		const db = "yos"
-	}
-)
+describe("Database memory", () => {
+  const db = "yos";
+});
