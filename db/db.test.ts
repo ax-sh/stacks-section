@@ -1,15 +1,16 @@
-import { faker } from "@faker-js/faker";
-import Database from "better-sqlite3";
-import { BetterSQLite3Database, drizzle } from "drizzle-orm/better-sqlite3";
-import { migrate } from "drizzle-orm/better-sqlite3/migrator";
-import * as schema from "./sqlite/schema";
-import { users } from "./sqlite/schema";
+import { faker } from '@faker-js/faker';
+import Database from 'better-sqlite3';
+import { BetterSQLite3Database, drizzle } from 'drizzle-orm/better-sqlite3';
+import { migrate } from 'drizzle-orm/better-sqlite3/migrator';
+import * as schema from './sqlite/schema';
+import { users } from './sqlite/schema';
 
 function buildMemoryDB() {
-  const sqlite = new Database(":memory:");
+  const sqlite = new Database(':memory:');
   const db: BetterSQLite3Database<typeof schema> = drizzle(sqlite, { schema });
 
-  migrate(db, { migrationsFolder: "drizzle" });
+  migrate(db, { migrationsFolder: 'drizzle' });
+  // sqlite.close();
   return db;
 }
 
@@ -21,8 +22,8 @@ async function seedDB(db: BetterSQLite3Database<typeof schema>) {
     .onConflictDoNothing();
 }
 
-describe("Database memory", () => {
-  it("should load memory db", async () => {
+describe('Database memory', () => {
+  it('should load memory db', async () => {
     const db = buildMemoryDB();
     await seedDB(db);
 
