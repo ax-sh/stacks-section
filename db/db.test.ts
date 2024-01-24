@@ -4,24 +4,20 @@ import { migrate } from "drizzle-orm/better-sqlite3/migrator";
 import * as schema from "./sqlite/schema";
 import { users } from "./sqlite/schema";
 
-
-
-
 function buildMemoryDB() {
-  const sqlite = new Database(':memory:');
+  const sqlite = new Database(":memory:");
   const db: BetterSQLite3Database<typeof schema> = drizzle(sqlite, { schema });
 
-  migrate(db, { migrationsFolder: 'drizzle' });
+  migrate(db, { migrationsFolder: "drizzle" });
   return db;
 }
 
 describe("Database memory", () => {
-  it("should load memory db",async () => {
+  it("should load memory db", async () => {
     const db = buildMemoryDB();
-    await db.insert(users).values({ id: 'one' });
-    const user = db.select().from(users).all()
+    await db.insert(users).values({ id: "one" });
+    const user = db.select().from(users).all();
     console.log(user);
-    expect(user).toHaveLength(1)
-
+    expect(user).toHaveLength(1);
   });
 });
