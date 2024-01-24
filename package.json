@@ -17,7 +17,9 @@
     "check": "pnpm biome check ./ --apply",
     "format:check": "biome check . && eslint .",
     "format": "biome check --apply-unsafe . && eslint --fix .",
-    "ox": "oxlint --nextjs-plugin"
+    "ox": "oxlint --nextjs-plugin",
+    "drizzle:gen": "pnpm drizzle-kit generate:sqlite --config=db/drizzle.config.ts",
+    "drizzle:push": "pnpm drizzle-kit push:sqlite"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",
