@@ -8,14 +8,10 @@ describe("Database memory", () => {
     const sqlite = new Database(":memory:");
     const db = drizzle(sqlite, { schema });
 
-    migrate(db,{ migrationsFolder: "", migrationsTable: "" });
-  })
+    migrate(db,{ migrationsFolder: "",
+      // migrationsFolder: "C:\\Users\\USER\\Desktop\\CODE\\youtube-personal-playlist-nextjs\\migrations",
+      migrationsTable: "" });
 
-  // migrate(db,
-  // //   {
-  // //   // migrationsFolder:
-  // //   //   "C:\\Users\\USER\\Desktop\\CODE\\youtube-personal-playlist-nextjs\\migrations",
-  // // }
-  // );
-  console.log(db.select().from(users).all());
+    console.log(db.select().from(users).all());
+  })
 });
