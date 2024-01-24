@@ -2,7 +2,7 @@ import { StackIconCard } from "@/app/features/search/filtered-icons";
 import { DroppableIconData } from "@/app/types";
 import { type UniqueIdentifier, useDroppable } from "@dnd-kit/core";
 import clsx from "clsx";
-import React, { type PropsWithChildren } from "react";
+import React, { type PropsWithChildren, useRef } from "react";
 import { TbDragDrop2 } from "react-icons/tb";
 import type { SimpleIcon } from "simple-icons";
 

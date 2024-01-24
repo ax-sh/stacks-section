@@ -8,7 +8,7 @@ import useIconStore from "@/store/icon-store";
 import { DragOverlay } from "@dnd-kit/core";
 
 import clsx from "clsx";
-import React, { useState } from "react";
+import React, { ElementRef, useRef, useState } from "react";
 import type { SimpleIcon } from "simple-icons";
 import { useShallow } from "zustand/react/shallow";
 
@@ -18,7 +18,9 @@ export function Search() {
   const getIcons = useIconStore(useShallow((state) => state.getIcons));
 
   const icons = getIcons();
-
+  const ref = useRef<ElementRef<"div">>(null);
+  const div = ref.current;
+  console.log(div?.cloneNode(true), div?.getBoundingClientRect());
   return (
     <div className={"flex flex-col gap-4"}>
       <SearchInput term={term} setTerm={setTerm} />
@@ -35,7 +37,7 @@ export function Search() {
           {!!draggedIcon && <StackIconCard key={draggedIcon.slug} icon={draggedIcon} />}
         </DragOverlay>
         <section className={"grid grid-cols-12 grid-rows-1 h-80 gap-4"}>
-          <div className={"relative col-span-10 row-span-1"}>
+          <div className={"relative col-span-10 row-span-1"} ref={ref}>
             <IconDroppableWrapper
               id={"large-droppable"}
               icons={icons}
