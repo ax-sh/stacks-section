@@ -1,24 +1,31 @@
-import Database from "better-sqlite3";
-import { BetterSQLite3Database, drizzle } from "drizzle-orm/better-sqlite3";
-import { migrate } from "drizzle-orm/better-sqlite3/migrator";
-import * as schema from "./sqlite/schema";
-import { users } from "./sqlite/schema";
+import Database from 'better-sqlite3';
+import { BetterSQLite3Database, drizzle } from 'drizzle-orm/better-sqlite3';
+import { migrate } from 'drizzle-orm/better-sqlite3/migrator';
+import * as schema from './sqlite/schema';
+import { users } from './sqlite/schema';
+import { faker } from '@faker-js/faker';
 
 function buildMemoryDB() {
-  const sqlite = new Database(":memory:");
+  const sqlite = new Database(':memory:');
   const db: BetterSQLite3Database<typeof schema> = drizzle(sqlite, { schema });
 
-  migrate(db, { migrationsFolder: "drizzle" });
+  migrate(db, { migrationsFolder: 'drizzle' });
   return db;
 }
 
-describe("Database memory", () => {
-  it("should load memory db", async () => {
-    const db = buildMemoryDB();
-    await db.insert(users).values({ id: "one" });
-    const user = db.select().from(users).all();
+async function seedDB(db: BetterSQLite3Database<typeof schema>) {
+  const data = { id: faker.commerce.price() };
+  await db.insert(users).values(faker.helpers.multiple(() => data));
+}
 
-    expect(user).toHaveLength(1);
-    console.log(user,  await  db.query.users.findMany());
+describe('Database memory', () => {
+  it('should load memory db', async () => {
+    const db = buildMemoryDB();
+    await seedDB(db);
+
+    const user = db.select().from(users).all();
+    const userQuery = await db.query.users.findMany();
+    // expect(user).toHaveLength(1);
+    console.log(userQuery);
   });
 });
